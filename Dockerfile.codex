@@ -1,0 +1,38 @@
+FROM jupyter/pyspark-notebook:latest
+
+USER root
+
+# Herramientas del entorno visual y red necesarias para Selenium dentro del contenedor.
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    openssl \
+    curl \
+    xvfb \
+    fluxbox \
+    x11vnc \
+    novnc \
+    websockify \
+    supervisor \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Brave Browser para scraping.
+RUN curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list \
+    && apt-get update && apt-get install -y brave-browser
+
+# Librerias de Python para scraping, MongoDB y analisis.
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas pyspark==3.5.0
+
+# Conectores Spark-MongoDB.
+RUN wget https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.3.0/mongo-spark-connector_2.12-10.3.0.jar -P /usr/local/spark/jars/ \
+    && wget https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-sync/4.11.1/mongodb-driver-sync-4.11.1.jar -P /usr/local/spark/jars/
+
+# Configuracion de noVNC y supervisor.
+COPY start-vnc.sh /usr/local/bin/start-vnc.sh
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN sed -i 's/\r$//' /usr/local/bin/start-vnc.sh && chmod +x /usr/local/bin/start-vnc.sh
+
+ENV DISPLAY=:99
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
