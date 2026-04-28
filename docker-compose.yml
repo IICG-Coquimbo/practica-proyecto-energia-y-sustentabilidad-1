@@ -1,6 +1,6 @@
 services:
   workspace:
-    image: jupyter/pyspark-notebook:latest
+    build: .
     container_name: BigData_workspace
     ports:
       - "8888:8888"   # Jupyter Lab
