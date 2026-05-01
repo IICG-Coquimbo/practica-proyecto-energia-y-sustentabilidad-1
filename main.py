@@ -64,7 +64,7 @@ def analizar_con_spark(spark, datos):
 
 def main():
     datos_anggy = scraper_anggy_jeraldo.ejecutar_extraccion(
-        limite_registros=int(os.getenv("LIMITE_REGISTROS", "30")),
+        limite_registros=int(os.getenv("LIMITE_REGISTROS", "500")),
     )
 
     print("Primeros registros energeticos extraidos:")

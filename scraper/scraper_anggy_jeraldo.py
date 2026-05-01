@@ -36,7 +36,7 @@ def _normalizar_columnas(dataframe):
     )
 
 
-def ejecutar_extraccion(limite_registros=30, pausa_manual=False):
+def ejecutar_extraccion(limite_registros=500, pausa_manual=False):
     """Extrae indicadores de energia y retorna una lista de diccionarios."""
     print("Descargando datos de energia baja en carbono...")
 
@@ -49,10 +49,8 @@ def ejecutar_extraccion(limite_registros=30, pausa_manual=False):
     df["anio"] = df["anio"].astype(int)
     df["valor"] = df["porcentaje_electricidad_baja_carbono"].astype(float)
 
-    ultimo_anio = int(df["anio"].max())
     df_reciente = (
-        df[df["anio"] == ultimo_anio]
-        .sort_values("valor", ascending=False)
+        df.sort_values(["anio", "valor"], ascending=[False, False])
         .head(limite_registros)
     )
 
@@ -77,6 +75,6 @@ def ejecutar_extraccion(limite_registros=30, pausa_manual=False):
 
 
 if __name__ == "__main__":
-    registros = ejecutar_extraccion(limite_registros=30)
+    registros = ejecutar_extraccion(limite_registros=500)
     for registro in registros[:3]:
         print(registro)
