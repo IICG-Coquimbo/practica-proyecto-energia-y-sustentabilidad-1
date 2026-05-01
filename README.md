@@ -1,6 +1,7 @@
-# BigData\_IICG\_2026\_Actualizado
+# BigData_IICG_2026_Actualizado
 
-Este respositorio sirve para el trabajo práctico de la asignatura Big Data.
+Este repositorio sirve para el trabajo practico de la asignatura Big Data.
 
-anggy-jeraldow33
+Trabajo de Anggy Jeraldo para el proyecto de sustentabilidad.
 
+[Open in Visual Studio Code](https://classroom.github.com/online_ide?assignment_repo_id=23077138&assignment_repo_type=AssignmentRepo)
