@@ -8,6 +8,7 @@ import pandas as pd
 INTEGRANTE = os.getenv("INTEGRANTE", "Nicol Castillo")
 NOMBRE_GRUPO = os.getenv("NOMBRE_GRUPO", "energia-y-sustentabilidad-1")
 TEMA_PROYECTO = os.getenv("TEMA_PROYECTO", "Impacto ambiental de la energia")
+ANIO_OBJETIVO = os.getenv("ANIO_OBJETIVO")
 
 EIA_GENERATION_URL = "https://www.eia.gov/electricity/data/state/annual_generation_state.xls"
 EIA_EMISSIONS_URL = "https://www.eia.gov/electricity/data/state/emission_annual.xlsx"
@@ -245,12 +246,44 @@ def cargar_cne_proyectos() -> pd.DataFrame:
     return df_final[COLUMNAS_ESTANDAR]
 
 
+def obtener_anios_por_dataset(df: pd.DataFrame) -> dict[str, set[int]]:
+    anios_por_dataset: dict[str, set[int]] = {}
+    for dataset, grupo in df.dropna(subset=["periodo"]).groupby("dataset"):
+        anios = set(pd.to_numeric(grupo["periodo"], errors="coerce").dropna().astype(int).tolist())
+        if anios:
+            anios_por_dataset[str(dataset)] = anios
+    return anios_por_dataset
+
+
+def seleccionar_anio_objetivo(anios_por_dataset: dict[str, set[int]]) -> int:
+    if not anios_por_dataset:
+        raise ValueError("No se encontraron anios validos para comparar entre los datasets.")
+
+    if ANIO_OBJETIVO:
+        anio = int(ANIO_OBJETIVO)
+        faltantes = [dataset for dataset, anios in anios_por_dataset.items() if anio not in anios]
+        if faltantes:
+            raise ValueError(
+                f"El anio objetivo {anio} no esta presente en todos los datasets: {', '.join(sorted(faltantes))}."
+            )
+        return anio
+
+    anios_comunes = set.intersection(*anios_por_dataset.values())
+    if not anios_comunes:
+        raise ValueError("No existe un anio comun entre todos los datasets para hacer comparaciones consistentes.")
+    return max(anios_comunes)
+
+
 def ejecutar_extraccion() -> list[dict[str, object]]:
     df_final = pd.concat(
         [cargar_eia_generacion(), cargar_eia_emisiones(), cargar_cne_proyectos()],
         ignore_index=True,
     )
     df_final["periodo"] = pd.to_numeric(df_final["periodo"], errors="coerce").astype("Int64")
+    anios_por_dataset = obtener_anios_por_dataset(df_final)
+    anio_objetivo = seleccionar_anio_objetivo(anios_por_dataset)
+    # Mantiene un solo anio comparable entre todas las fuentes.
+    df_final = df_final[df_final["periodo"] == anio_objetivo].copy()
     df_final = df_final.drop_duplicates(subset=["dataset", "item", "periodo", "indicador", "integrante", "valor"])
     df_final = df_final.sort_values(
         ["pais", "indicador", "region", "periodo", "item"],
