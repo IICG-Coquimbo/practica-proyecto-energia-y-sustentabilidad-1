@@ -1,0 +1,50 @@
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile.codex
+    ports:
+      - "8889:8888"   # Jupyter Lab
+      - "6081:6080"   # Visualizador del scraper (VNC)
+      - "4041:4040"   # Spark UI
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - JUPYTER_PASSWORD=iicg2026
+      - JUPYTER_ALLOW_INSECURE_WRITES=true
+    depends_on:
+      - database
+    restart: always
+    networks:
+      - bigdata_net
+
+  database:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+    networks:
+      - bigdata_net
+
+  admin-db:
+    image: mongo-express:latest
+    ports:
+      - "8083:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://database:27017/
+    depends_on:
+      - database
+    restart: always
+    networks:
+      - bigdata_net
+
+networks:
+  bigdata_net:
+    driver: bridge
+
+volumes:
+  mongo_data:
