@@ -2,7 +2,7 @@ services:
   workspace:
     build:
       context: .
-      dockerfile: Dockerfile.codex
+      dockerfile: Dockerfile.jupyter
     ports:
       - "8889:8888"   # Jupyter Lab
       - "6081:6080"   # Visualizador del scraper (VNC)

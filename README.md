@@ -145,4 +145,4 @@ La rama individual `feature/Nicol-Castillo` contiene actividad distribuida en va
 - `scrapers/scraper_nicol_castillo.py`: scraper e integracion del aporte individual.
 - `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`: revision de resultados en Jupyter.
 - `docker-compose.yml`: coordinacion de servicios.
-- `Dockerfile.codex`: dependencias para scraping, Spark y conectores MongoDB.
+- `Dockerfile.jupyter`: dependencias para scraping, Spark y conectores MongoDB.
