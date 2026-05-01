@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 3. Instalar librerías de Python (incluyendo el manager de drivers)
-RUN pip install selenium pymongo webdriver-manager
+RUN pip install selenium pymongo webdriver-manager pyspark==3.5.0
 
 
 # Imagen base: trae Jupyter + Python + PySpark ya configurado
@@ -45,7 +45,6 @@ RUN apt-get update && apt-get install -y \
 
 # Vuelve al usuario normal de Jupyter (buena pr ctica de seguridad)
  
-USER jovyan
 
 # 2. Instalaci n de JARs: Versi n 10.3.0 (Compatible con Spark 3.5)
 # Limpiamos la carpeta primero para que no queden versiones viejas chocando
@@ -57,11 +56,15 @@ RUN rm -f /usr/local/spark/jars/mongo-spark-connector* && \
 RUN curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list \
     && apt-get update && apt-get install -y brave-browser
- 
+
+ USER jovyan
 
 # 3. Librer as de Python para todo el curso (Scraping + Atlas + Spark)
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas
+    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas pyspark==3.5.0
+
+# Forzamos usuario root para tener permisos de escritura
+USER root
 
 # 4. Conectores Spark-MongoDB
 RUN wget https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.3.0/mongo-spark-connector_2.12-10.3.0.jar -P /usr/local/spark/jars/ \
@@ -77,14 +80,18 @@ RUN sed -i 's/\r$//' /usr/local/bin/start-vnc.sh \
     && chmod +x /usr/local/bin/start-vnc.sh && \
     chown -R jovyan:users /home/jovyan/work
 
+# 6. Librerías de Python (Aquí recién cambiamos a jovyan)
+USER jovyan
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas pyspark==3.5.0
+
+# 7. Configuración final y ejecución
+USER root
+ENV DISPLAY=:99
 EXPOSE 8888 5900 6080 4040
 
-# Iniciamos como root para evitar el error de setuid de la sesi n anterior
-USER root
+# Solo un CMD al final
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
- 
 
-ENV DISPLAY=:99
-# Supervisor lanza Jupyter y el Entorno Gr fico al mismo tiempo
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
- 
+
+
