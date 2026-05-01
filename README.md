@@ -113,8 +113,7 @@ db.energia_sustentabilidad.countDocuments()
 | Estructura NoSQL | Cumplido: coleccion sugerida `energia_sustentabilidad` |
 | Actualizar en vez de duplicar | Cumplido en `main.py` con operaciones `upsert` |
 | README con business case y 4V | Cumplido en este README |
-| Evidencia docker stats | Pendiente: agregar captura en `docs/evidencias/` |
-| Evidencia conteo MongoDB | Pendiente: agregar captura en `docs/evidencias/` |
+| Evidencia docker stats | Cumplido: `docs/evidencias/docker_stats_thalia.png` |
+| Evidencia conteo MongoDB | Cumplido: `docs/evidencias/conteo_mongodb_thalia.png` |
 | Merge a rama principal/grupal | Pendiente: debe hacerlo el grupo cuando integren aportes |
 | 5 commits por integrante en 3 semanas | Revisar historial de GitHub antes de la entrega final |
-
