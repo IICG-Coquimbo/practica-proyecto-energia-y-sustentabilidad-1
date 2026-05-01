@@ -2,14 +2,14 @@ import os
 
 from pymongo import MongoClient
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import avg, col, count, regexp_replace, split
+from pyspark.sql.functions import avg, col, count, max as spark_max, regexp_replace
 
 from scraper import scraper_anggy_jeraldo
 
 
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://database:27017")
 DATABASE_NAME = os.getenv("MONGO_DATABASE", "TiendaBigData")
-COLLECTION_NAME = os.getenv("MONGO_COLLECTION", "AmazonLaptops")
+COLLECTION_NAME = os.getenv("MONGO_COLLECTION", "EnergiaSustentabilidad")
 
 
 def guardar_en_mongo(datos):
@@ -25,7 +25,7 @@ def guardar_en_mongo(datos):
 
 def construir_spark():
     return (
-        SparkSession.builder.appName("IntegradoraBigData_AnggyJeraldo")
+        SparkSession.builder.appName("IntegradoraBigData_Energia_AnggyJeraldo")
         .config("spark.mongodb.read.connection.uri", f"{MONGO_URI}/{DATABASE_NAME}.{COLLECTION_NAME}")
         .config("spark.mongodb.write.connection.uri", f"{MONGO_URI}/{DATABASE_NAME}.{COLLECTION_NAME}")
         .config("spark.jars.packages", "org.mongodb.spark:mongo-spark-connector_2.12:10.3.0")
@@ -44,32 +44,32 @@ def analizar_con_spark(spark, datos):
             "valor_numerico",
             regexp_replace(col("valor").cast("string"), "[^0-9.]", "").cast("double"),
         )
-        .filter(col("valor_numerico") > 100)
-        .withColumn("marca", split(col("identificador"), " ")[0])
+        .filter(col("valor_numerico").isNotNull())
+        .filter(col("valor_numerico") >= 0)
     )
 
-    print("Total de productos procesados:", df_limpio.count())
-    reporte_marcas = (
-        df_limpio.groupBy("marca")
+    print("Total de registros energeticos procesados:", df_limpio.count())
+    reporte_energia = (
+        df_limpio.groupBy("categoria")
         .agg(
-            count("identificador").alias("total_productos"),
-            avg("valor_numerico").alias("precio_promedio"),
+            count("identificador").alias("total_paises"),
+            avg("valor_numerico").alias("promedio_electricidad_baja_carbono"),
+            spark_max("valor_numerico").alias("maximo_electricidad_baja_carbono"),
         )
-        .orderBy(col("precio_promedio").desc())
+        .orderBy(col("promedio_electricidad_baja_carbono").desc())
     )
-    reporte_marcas.show(truncate=False)
-    return reporte_marcas
+    reporte_energia.show(truncate=False)
+    return reporte_energia
 
 
 def main():
     datos_anggy = scraper_anggy_jeraldo.ejecutar_extraccion(
-        limite_paginas=int(os.getenv("LIMITE_PAGINAS", "1")),
-        pausa_manual=os.getenv("PAUSA_MANUAL", "1") == "1",
+        limite_registros=int(os.getenv("LIMITE_REGISTROS", "30")),
     )
 
-    print("Primeros productos extraidos:")
-    for producto in datos_anggy[:3]:
-        print(producto)
+    print("Primeros registros energeticos extraidos:")
+    for registro in datos_anggy[:3]:
+        print(registro)
 
     guardados = guardar_en_mongo(datos_anggy)
     print(f"Datos guardados en MongoDB: {guardados}")
@@ -80,4 +80,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

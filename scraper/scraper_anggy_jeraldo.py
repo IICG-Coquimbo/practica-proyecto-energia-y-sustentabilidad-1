@@ -1,118 +1,82 @@
-import os
-import time
+from datetime import datetime, timezone
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
+import pandas as pd
 
 
 INTEGRANTE = "Anggy_Jeraldo"
-CATEGORIA_PRODUCTO = "Laptops"
-URL_BUSQUEDA = "https://www.amazon.es/s?k=laptops"
+CATEGORIA_PRODUCTO = "Energia"
+FUENTE_DATOS = (
+    "https://ourworldindata.org/grapher/share-electricity-low-carbon.csv"
+    "?v=1&csvType=full&useColumnShortNames=false"
+)
 
 
-def _limpiar_precio(valor):
-    texto = str(valor).replace(".", "").replace(",", "").strip()
-    return float(texto) if texto.isdigit() else 0.0
-
-
-def _crear_driver():
-    options = Options()
-
-    if os.path.exists("/usr/bin/google-chrome"):
-        options.binary_location = "/usr/bin/google-chrome"
-    elif os.path.exists("/usr/bin/brave-browser"):
-        options.binary_location = "/usr/bin/brave-browser"
-
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-software-rasterizer")
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument("--remote-debugging-port=9222")
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
+def _normalizar_columnas(dataframe):
+    columnas = {columna.lower(): columna for columna in dataframe.columns}
+    entidad = columnas.get("entity")
+    anio = columnas.get("year")
+    valor = next(
+        (
+            columna
+            for columna in dataframe.columns
+            if columna not in {entidad, anio, columnas.get("code")}
+        ),
+        None,
     )
 
-    return webdriver.Chrome(options=options)
+    if not entidad or not anio or not valor:
+        raise ValueError("No se encontraron las columnas esperadas en la fuente.")
+
+    return dataframe.rename(
+        columns={
+            entidad: "pais",
+            anio: "anio",
+            valor: "porcentaje_electricidad_baja_carbono",
+        }
+    )
 
 
-def ejecutar_extraccion(limite_paginas=1, pausa_manual=True):
-    """Extrae productos de Amazon y retorna una lista de diccionarios."""
-    datos_finales = []
-    driver = None
+def ejecutar_extraccion(limite_registros=30, pausa_manual=False):
+    """Extrae indicadores de energia y retorna una lista de diccionarios."""
+    print("Descargando datos de energia baja en carbono...")
 
-    try:
-        driver = _crear_driver()
-        driver.get(URL_BUSQUEDA)
+    df = pd.read_csv(
+        FUENTE_DATOS,
+        storage_options={"User-Agent": "BigData IICG energia scraper/1.0"},
+    )
+    df = _normalizar_columnas(df)
+    df = df.dropna(subset=["pais", "anio", "porcentaje_electricidad_baja_carbono"])
+    df["anio"] = df["anio"].astype(int)
+    df["valor"] = df["porcentaje_electricidad_baja_carbono"].astype(float)
 
-        if pausa_manual:
-            print("Accede a http://localhost:6080/vnc.html y valida el navegador.")
-            input("Presiona ENTER cuando la pagina este lista para extraer datos...")
+    ultimo_anio = int(df["anio"].max())
+    df_reciente = (
+        df[df["anio"] == ultimo_anio]
+        .sort_values("valor", ascending=False)
+        .head(limite_registros)
+    )
 
-        titulo = driver.title.lower()
-        if "robot" in titulo or "captcha" in titulo:
-            print("Bloqueo real detectado en el titulo del navegador.")
-            return datos_finales
+    fecha_captura = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    datos_finales = [
+        {
+            "identificador": fila["pais"],
+            "valor": float(fila["valor"]),
+            "unidad": "% electricidad baja en carbono",
+            "anio": int(fila["anio"]),
+            "categoria": CATEGORIA_PRODUCTO,
+            "fuente": "Our World in Data",
+            "integrante": INTEGRANTE,
+            "grupo": "G1_Energia_AnggyJeraldo",
+            "fecha_captura": fecha_captura,
+        }
+        for _, fila in df_reciente.iterrows()
+    ]
 
-        for numero_pagina in range(limite_paginas):
-            print(f"Procesando pagina {numero_pagina + 1}")
-            WebDriverWait(driver, 20).until(
-                EC.presence_of_all_elements_located(
-                    (By.CSS_SELECTOR, "div[data-component-type='s-search-result']")
-                )
-            )
-
-            bloques = driver.find_elements(
-                By.CSS_SELECTOR, "div[data-component-type='s-search-result']"
-            )
-
-            for bloque in bloques:
-                try:
-                    nombre = bloque.find_element(By.TAG_NAME, "h2").text.strip()
-                    precio = bloque.find_element(By.CSS_SELECTOR, ".a-price-whole").text
-                    valor = _limpiar_precio(precio)
-
-                    if nombre and valor > 0:
-                        datos_finales.append(
-                            {
-                                "identificador": nombre,
-                                "valor": valor,
-                                "categoria": CATEGORIA_PRODUCTO,
-                                "integrante": INTEGRANTE,
-                                "grupo": "G1_Amazon_AnggyJeraldo",
-                                "fecha_captura": time.strftime("%Y-%m-%d %H:%M:%S"),
-                            }
-                        )
-                except Exception:
-                    continue
-
-            if numero_pagina == limite_paginas - 1:
-                break
-
-            try:
-                boton_siguiente = driver.find_element(By.CLASS_NAME, "s-pagination-next")
-                driver.execute_script("arguments[0].click();", boton_siguiente)
-                time.sleep(5)
-            except Exception:
-                break
-
-    except Exception as exc:
-        print(f"Error en Selenium: {exc}")
-    finally:
-        if driver is not None:
-            driver.quit()
-
-    print(f"Productos extraidos: {len(datos_finales)}")
+    print(f"Registros energeticos extraidos: {len(datos_finales)}")
     return datos_finales
 
 
 if __name__ == "__main__":
-    productos = ejecutar_extraccion(limite_paginas=1, pausa_manual=True)
-    for producto in productos[:3]:
-        print(producto)
-
+    registros = ejecutar_extraccion(limite_registros=30)
+    for registro in registros[:3]:
+        print(registro)
