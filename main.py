@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import importlib
 import os
 import pkgutil
@@ -7,7 +8,9 @@ from pathlib import Path
 from typing import Any
 
 import certifi
+import pandas as pd
 from pymongo import MongoClient
+from pymongo import UpdateOne
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit, trim, when
 
@@ -171,15 +174,18 @@ def ejecutar_scrapers() -> list[dict[str, Any]]:
 
 
 def verificar_conexion_mongo() -> None:
-    kwargs: dict[str, Any] = {"serverSelectionTimeoutMS": 5000}
-    if MONGO_URI.startswith("mongodb+srv://"):
-        kwargs["tlsCAFile"] = certifi.where()
-
-    cliente = MongoClient(MONGO_URI, **kwargs)
+    cliente = crear_cliente_mongo()
     try:
         cliente.admin.command("ping")
     finally:
         cliente.close()
+
+
+def crear_cliente_mongo() -> MongoClient:
+    kwargs: dict[str, Any] = {"serverSelectionTimeoutMS": 5000}
+    if MONGO_URI.startswith("mongodb+srv://"):
+        kwargs["tlsCAFile"] = certifi.where()
+    return MongoClient(MONGO_URI, **kwargs)
 
 
 def crear_spark() -> SparkSession:
@@ -225,7 +231,7 @@ def limpiar_con_spark(spark: SparkSession, registros: list[dict[str, Any]]):
     return df
 
 
-def exportar_resultados(df) -> None:
+def exportar_resultados(df) -> pd.DataFrame:
     pdf = df.orderBy("integrante", "dataset", "item").toPandas()
     csv_path = OUTPUT_DIR / "union_semana7.csv"
     json_path = OUTPUT_DIR / "union_semana7.json"
@@ -233,16 +239,52 @@ def exportar_resultados(df) -> None:
     pdf.to_json(json_path, orient="records", force_ascii=False, indent=2)
     print(f"CSV generado en: {csv_path}")
     print(f"JSON generado en: {json_path}")
+    return pdf
 
 
-def guardar_en_mongo(df) -> None:
-    (
-        df.write.format("mongodb")
-        .mode("append")
-        .option("database", MONGO_DATABASE)
-        .option("collection", MONGO_COLLECTION)
-        .save()
+def construir_registro_id(record: dict[str, Any]) -> str:
+    clave = "||".join(
+        str(record.get(field) if record.get(field) is not None else "")
+        for field in [
+            "integrante",
+            "dataset",
+            "pais",
+            "region",
+            "periodo",
+            "indicador",
+            "categoria_energia",
+            "tecnologia",
+            "actor",
+            "item",
+        ]
     )
+    return hashlib.sha256(clave.encode("utf-8")).hexdigest()
+
+
+def guardar_en_mongo(pdf: pd.DataFrame) -> None:
+    if pdf.empty:
+        return
+
+    docs = pdf.astype(object).where(pd.notnull(pdf), None).to_dict("records")
+    operaciones = []
+
+    for doc in docs:
+        registro_id = construir_registro_id(doc)
+        doc["registro_id"] = registro_id
+        operaciones.append(UpdateOne({"registro_id": registro_id}, {"$set": doc}, upsert=True))
+
+    cliente = crear_cliente_mongo()
+    try:
+        coleccion = cliente[MONGO_DATABASE][MONGO_COLLECTION]
+        resultado = coleccion.bulk_write(operaciones, ordered=False)
+        print(
+            "MongoDB upserts:",
+            f"insertados={resultado.upserted_count}",
+            f"actualizados={resultado.modified_count}",
+            f"coincidencias={resultado.matched_count}",
+        )
+    finally:
+        cliente.close()
 
 
 def main() -> None:
@@ -258,8 +300,8 @@ def main() -> None:
         if total == 0:
             raise RuntimeError("Todos los registros fueron descartados durante la limpieza.")
 
-        exportar_resultados(df_limpio)
-        guardar_en_mongo(df_limpio)
+        pdf = exportar_resultados(df_limpio)
+        guardar_en_mongo(pdf)
 
         print(f"Registros finales: {total}")
         print(f"Destino MongoDB: {MONGO_DATABASE}.{MONGO_COLLECTION}")
