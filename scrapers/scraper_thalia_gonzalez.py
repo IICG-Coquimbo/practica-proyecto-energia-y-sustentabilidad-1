@@ -7,8 +7,9 @@ from pathlib import Path
 import pandas as pd
 
 
-GRUPO = "Thalia-Gonzalez"
-TEMA = "Impacto ambiental de la energia"
+INTEGRANTE = os.getenv("INTEGRANTE", "Thalia Gonzalez")
+NOMBRE_GRUPO = os.getenv("NOMBRE_GRUPO", "energia-y-sustentabilidad-1")
+TEMA_PROYECTO = os.getenv("TEMA_PROYECTO", "Impacto ambiental de la energia")
 FUENTE_SITIO = "World Resources Institute"
 DATASET = "global_power_plant_database"
 URL_ORIGEN = "https://raw.githubusercontent.com/wri/global-power-plant-database/master/output_database/global_power_plant_database.csv"
@@ -64,9 +65,9 @@ def ejecutar_extraccion(limite: int | None = 500, usar_cache: bool = True) -> li
             "fuente_sitio": str(fila.get("fuente_sitio", FUENTE_SITIO)),
             "dataset": str(fila.get("dataset", DATASET)),
             "url_origen": str(fila.get("url_origen", URL_ORIGEN)),
-            "grupo": GRUPO,
-            "integrante": GRUPO,
-            "tema": str(fila.get("tema", TEMA)),
+            "grupo": NOMBRE_GRUPO,
+            "integrante": INTEGRANTE,
+            "tema": str(fila.get("tema", TEMA_PROYECTO)),
             "fecha_extraccion": str(fila.get("fecha_extraccion", fecha)),
             "pais": str(fila.get("pais", "")),
             "region": str(fila.get("region", "")),
@@ -91,4 +92,3 @@ if __name__ == "__main__":
     print(f"Registros extraidos: {len(datos)}")
     for registro in datos[:3]:
         print(registro)
-
