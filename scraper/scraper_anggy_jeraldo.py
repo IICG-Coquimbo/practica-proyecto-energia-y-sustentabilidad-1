@@ -1,8 +1,12 @@
+import os
 from datetime import datetime, timezone
 
 import pandas as pd
 
 
+INTEGRANTE = os.getenv("INTEGRANTE", "anggy jeraldo")
+NOMBRE_GRUPO = os.getenv("NOMBRE_GRUPO", "energia-y-sustentabilidad-1")
+TEMA_PROYECTO = os.getenv("TEMA_PROYECTO", "Impacto ambiental de la energia")
 DATASET = "share-electricity-low-carbon"
 FUENTE_DATOS = (
     "https://ourworldindata.org/grapher/share-electricity-low-carbon.csv"
@@ -60,8 +64,8 @@ def ejecutar_extraccion(limite_registros=500, pausa_manual=False):
             "fuente_sitio": "Our World in Data",
             "dataset": DATASET,
             "url_origen": URL_ORIGEN,
-            "grupo": "G1_Energia_AnggyJeraldo",
-            "tema": "Energia y sustentabilidad",
+            "grupo": NOMBRE_GRUPO,
+            "tema": TEMA_PROYECTO,
             "fecha_extraccion": fecha_captura,
             "pais": fila["pais"],
             "region": "Internacional",
@@ -69,7 +73,7 @@ def ejecutar_extraccion(limite_registros=500, pausa_manual=False):
             "indicador": "Porcentaje de electricidad baja en carbono",
             "categoria_energia": "Electricidad baja en carbono",
             "tecnologia": "Renovables y nuclear",
-            "actor": "Our World in Data",
+            "actor": INTEGRANTE,
             "item": f"{fila['pais']} - electricidad baja en carbono - {int(fila['anio'])}",
             "valor": float(fila["valor"]),
             "unidad": "% electricidad baja en carbono",
