@@ -13,6 +13,24 @@ TEMA_PROYECTO = os.getenv("TEMA_PROYECTO", "Impacto ambiental de la energia")
 FUENTE_SITIO = "World Resources Institute"
 DATASET = "global_power_plant_database"
 URL_ORIGEN = "https://raw.githubusercontent.com/wri/global-power-plant-database/master/output_database/global_power_plant_database.csv"
+ETIQUETAS_ENTREGA = [
+    "fuente_sitio",
+    "dataset",
+    "url_origen",
+    "grupo",
+    "tema",
+    "fecha_extraccion",
+    "pais",
+    "region",
+    "periodo",
+    "indicador",
+    "categoria_energia",
+    "tecnologia",
+    "actor",
+    "item",
+    "valor",
+    "unidad",
+]
 
 
 def _clasificar_categoria(tecnologia: str) -> str:
@@ -23,8 +41,8 @@ def _clasificar_categoria(tecnologia: str) -> str:
 def ejecutar_extraccion(limite: int | None = 500, usar_cache: bool = True) -> list[dict]:
     """Extrae y normaliza datos de plantas de generacion electrica.
 
-    Retorna una lista de diccionarios con el esquema acordado para Semana 7:
-    identificador, item, valor, integrante/grupo, categoria_energia y metadatos.
+    Retorna una lista de diccionarios con las 16 etiquetas exigidas
+    para la primera entrega.
     """
     cache = Path(__file__).resolve().parents[1] / "Energy" / "datos_auditoria_global.csv"
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -66,7 +84,6 @@ def ejecutar_extraccion(limite: int | None = 500, usar_cache: bool = True) -> li
             "dataset": str(fila.get("dataset", DATASET)),
             "url_origen": str(fila.get("url_origen", URL_ORIGEN)),
             "grupo": NOMBRE_GRUPO,
-            "integrante": INTEGRANTE,
             "tema": str(fila.get("tema", TEMA_PROYECTO)),
             "fecha_extraccion": str(fila.get("fecha_extraccion", fecha)),
             "pais": str(fila.get("pais", "")),
@@ -76,12 +93,11 @@ def ejecutar_extraccion(limite: int | None = 500, usar_cache: bool = True) -> li
             "categoria_energia": str(fila.get("categoria_energia", _clasificar_categoria(tecnologia))),
             "tecnologia": tecnologia,
             "actor": str(fila.get("actor", "Sin informacion")),
-            "identificador": item,
             "item": item,
             "valor": float(fila["valor"]),
             "unidad": str(fila.get("unidad", "MW")),
         }
-        registros.append(registro)
+        registros.append({etiqueta: registro[etiqueta] for etiqueta in ETIQUETAS_ENTREGA})
 
     return registros
 

@@ -22,6 +22,8 @@ services:
     container_name: bigdata_mongodb
     ports:
       - "27017:27017"      # Puerto de MongoDB
+    volumes:
+      - mongo_data:/data/db
     restart: always
     networks:
       - bigdata_net
@@ -53,3 +55,6 @@ networks:
   bigdata_net:
     driver: bridge
     name: BigData_Network_UCN
+
+volumes:
+  mongo_data:
