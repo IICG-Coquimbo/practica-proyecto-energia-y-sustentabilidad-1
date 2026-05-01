@@ -1,0 +1,55 @@
+services:
+  workspace:
+    image: jupyter/pyspark-notebook:latest
+    container_name: BigData_workspace
+    ports:
+      - "8888:8888"   # Jupyter Lab
+      - "6080:6080"   # Visualizador del Scraper (VNC)
+      - "4040:4040"   # Spark UI
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    dns:
+      - 8.8.8.8
+    user: root
+    restart: always
+    networks:
+      - bigdata_net
+
+  database:                # <--- ESTE ES EL SERVICIO QUE FALTABA
+    image: mongo:latest
+    container_name: bigdata_mongodb
+    ports:
+      - "27017:27017"      # Puerto de MongoDB
+    restart: always
+    networks:
+      - bigdata_net
+
+  visualizer:
+    image: mongo-express
+    container_name: BigData_Visualizer
+    ports:
+      - "8081:8081"        # expone el puerto interno 8081 hacia tu máquina
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=database   # apunta al servicio "database"
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+    restart: always
+    networks:
+      - bigdata_net
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: BigData_FileBrowser
+    ports:
+      - "8082:80"          # Gestor de archivos
+    volumes:
+      - .:/srv
+    restart: always
+    networks:
+      - bigdata_net
+
+networks:
+  bigdata_net:
+    driver: bridge
+    name: BigData_Network_UCN
