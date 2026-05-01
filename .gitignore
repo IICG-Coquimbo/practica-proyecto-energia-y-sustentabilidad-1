@@ -1,0 +1,7 @@
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+Energy/Untitled4.ipynb
+Energy/.ipynb_checkpoints/Untitled4-checkpoint.ipynb
+__pycache__/
+*.pyc
+.env
