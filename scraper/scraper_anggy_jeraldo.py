@@ -3,12 +3,12 @@ from datetime import datetime, timezone
 import pandas as pd
 
 
-INTEGRANTE = "Anggy_Jeraldo"
-CATEGORIA_PRODUCTO = "Energia"
+DATASET = "share-electricity-low-carbon"
 FUENTE_DATOS = (
     "https://ourworldindata.org/grapher/share-electricity-low-carbon.csv"
     "?v=1&csvType=full&useColumnShortNames=false"
 )
+URL_ORIGEN = "https://ourworldindata.org/grapher/share-electricity-low-carbon"
 
 
 def _normalizar_columnas(dataframe):
@@ -57,15 +57,22 @@ def ejecutar_extraccion(limite_registros=500, pausa_manual=False):
     fecha_captura = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     datos_finales = [
         {
-            "identificador": fila["pais"],
+            "fuente_sitio": "Our World in Data",
+            "dataset": DATASET,
+            "url_origen": URL_ORIGEN,
+            "grupo": "G1_Energia_AnggyJeraldo",
+            "tema": "Energia y sustentabilidad",
+            "fecha_extraccion": fecha_captura,
+            "pais": fila["pais"],
+            "region": "Internacional",
+            "periodo": int(fila["anio"]),
+            "indicador": "Porcentaje de electricidad baja en carbono",
+            "categoria_energia": "Electricidad baja en carbono",
+            "tecnologia": "Renovables y nuclear",
+            "actor": "Our World in Data",
+            "item": f"{fila['pais']} - electricidad baja en carbono - {int(fila['anio'])}",
             "valor": float(fila["valor"]),
             "unidad": "% electricidad baja en carbono",
-            "anio": int(fila["anio"]),
-            "categoria": CATEGORIA_PRODUCTO,
-            "fuente": "Our World in Data",
-            "integrante": INTEGRANTE,
-            "grupo": "G1_Energia_AnggyJeraldo",
-            "fecha_captura": fecha_captura,
         }
         for _, fila in df_reciente.iterrows()
     ]

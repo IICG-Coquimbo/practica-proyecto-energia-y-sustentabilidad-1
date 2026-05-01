@@ -50,9 +50,9 @@ def analizar_con_spark(spark, datos):
 
     print("Total de registros energeticos procesados:", df_limpio.count())
     reporte_energia = (
-        df_limpio.groupBy("categoria")
+        df_limpio.groupBy("tema", "categoria_energia")
         .agg(
-            count("identificador").alias("total_paises"),
+            count("item").alias("total_registros"),
             avg("valor_numerico").alias("promedio_electricidad_baja_carbono"),
             spark_max("valor_numerico").alias("maximo_electricidad_baja_carbono"),
         )
