@@ -1,0 +1,2 @@
+from scraper.scraper_anggy_jeraldo import ejecutar_extraccion
+

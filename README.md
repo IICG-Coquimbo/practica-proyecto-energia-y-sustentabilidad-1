@@ -5,28 +5,30 @@ Repositorio de trabajo para el Hito 1 del proyecto de Big Data orientado al anal
 ## Hito 1
 
 ### Situacion problema
-Hoy la toma de decisiones sobre energia y sustentabilidad suele hacerse con datos fragmentados: una parte en reportes publicos, otra en planillas manuales y otra en portales distintos. Eso dificulta comparar generacion electrica, emisiones y proyectos energeticos entre paises, regiones y tecnologias dentro del mismo periodo.
+
+La toma de decisiones sobre energia y sustentabilidad suele hacerse con datos fragmentados: reportes publicos, planillas manuales y portales separados. Esto dificulta comparar generacion electrica, emisiones, tecnologias y capacidad instalada entre paises, regiones y periodos.
 
 ### Propuesta de valor
-El scraping e integracion automatizada del sector energia permite consolidar en una sola base NoSQL datos publicos de EIA y CNE, normalizarlos y dejar listas comparaciones entre generacion, emisiones y almacenamiento. Esto reduce trabajo manual, mejora la trazabilidad del dato y acelera decisiones sobre transicion energetica, tecnologias prioritarias y seguimiento de proyectos.
+
+El scraping e integracion automatizada del sector energia permite consolidar datos publicos en una sola base NoSQL, normalizarlos con una estructura comun y dejarlos listos para analisis con Spark. Asi el equipo puede comparar transicion energetica, tecnologias prioritarias, presencia de renovables y capacidad de generacion sin depender de revision manual.
 
 ### Analisis de las 4V
 
 **Volumen**
 
-El criterio del curso exige mas de 500 registros por integrante y mas de 3.000 a nivel grupal. En este aporte individual se consolidaron 2.186 registros validos para un solo ano comparable, por lo que el volumen individual ya supera el minimo exigido. La integracion grupal permite escalar el total del repositorio hasta el umbral global.
+La pauta exige al menos 500 registros por integrante. El equipo integra aportes de Nicol Castillo, Thalia Gonzalez y Anggy Jeraldo; cada scraper prepara al menos 500 documentos, por lo que el volumen grupal esperado supera 1.500 registros.
 
 **Variedad**
 
-Cada documento contiene 18 etiquetas, incluyendo fuente, dataset, URL, grupo, integrante, tema, fecha de extraccion, pais, region, periodo, indicador, categoria energetica, tecnologia, actor, item, valor, unidad y scraper de origen. Esta variedad permite contextualizar los valores numericos antes de compararlos.
+Los registros usan una estructura comun con fuente, dataset, URL, grupo, integrante o scraper de origen, tema, fecha de extraccion, pais, region, periodo, indicador, categoria energetica, tecnologia, actor, item, valor y unidad.
 
 **Veracidad**
 
-La veracidad se asegura con limpieza de tipos, normalizacion de numericos, descarte de vacios, filtrado de valores no validos, deduplicacion y seleccion automatica del ultimo ano comun entre todos los datasets. Asi se evita comparar periodos distintos o cargar precios/valores como strings inconsistentes.
+El integrador normaliza tipos, transforma `valor` a numerico, limpia strings vacios, descarta registros incompletos, deduplica y guarda con `upsert` para evitar duplicados logicos cuando un scraper vuelve a correr.
 
 **Velocidad**
 
-La frecuencia ideal de actualizacion depende de la fuente. Para los proyectos de energia y almacenamiento conviene una revision mensual, mientras que los datasets anuales de generacion y emisiones pueden recargarse cuando la fuente publica entregue un nuevo corte oficial. En el proyecto se priorizo una fotografia consistente del ano 2024 para comparacion.
+Las fuentes energeticas pueden actualizarse de forma semanal o mensual. Para datasets anuales se recomienda recargar cuando exista un nuevo corte oficial; para indicadores web dinamicos se puede ejecutar con mayor frecuencia.
 
 ## Arquitectura
 
@@ -39,93 +41,93 @@ El proyecto tambien soporta conexion a MongoDB Atlas mediante variables de entor
 
 ## Ejecucion
 
-Comando solicitado por la pauta:
-
-```bash
-docker compose up -d
-```
-
-Comando recomendado para primera ejecucion o cuando cambia la imagen:
+Levantar servicios:
 
 ```bash
 docker compose up -d --build
 ```
 
-Para ejecutar la integracion:
+Ejecutar la integracion:
 
 ```bash
 docker compose exec workspace bash -lc "cd /home/jovyan/work && python main.py"
 ```
 
-Para visualizar en Jupyter:
+Jupyter:
 
 ```text
 http://localhost:8889/lab
 ```
 
-Notebook principal de visualizacion:
+Mongo Express:
 
-- `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`
+```text
+http://localhost:8083
+```
 
-## Resultados tecnicos del aporte individual
+## Aportes individuales integrados
 
-- Registros validados: `2186`
-- Ano comun utilizado para la comparacion: `2024`
-- Datasets consolidados:
-  - `annual_generation_state`: 1437
-  - `emission_annual`: 715
-  - `pmgd`: 27
-  - `pgeneracion`: 5
-  - `bess`: 2
-- Campos por documento: `18`
-
-El integrador realiza limpieza con Spark y luego guarda en Mongo usando `upsert`, evitando duplicados logicos cuando el scraper vuelve a procesar los mismos registros.
+| Integrante | Rama | Scraper | Fuente principal | Registros esperados |
+| --- | --- | --- | --- | --- |
+| Nicol Castillo | `feature/Nicol-Castillo` | `scrapers/scraper_nicol_castillo.py` | EIA y CNE | 500+ |
+| Thalia Gonzalez | `feature/Thalia-Gonzalez` | `scrapers/scraper_thalia_gonzalez.py` | World Resources Institute | 500 |
+| Anggy Jeraldo | `feature/anggy-jeraldo` | `scrapers/scraper_anggy_jeraldo.py` | Our World in Data | 500 |
 
 ## Estructura de almacenamiento
 
-Se usa una coleccion general con separacion logica por medio de los campos:
+El integrador guarda en la coleccion:
+
+```text
+proyecto_bigdata.union_semana7
+```
+
+Los documentos se separan logicamente mediante:
 
 - `grupo`
 - `integrante`
 - `dataset`
 - `indicador`
 - `periodo`
-
-Esto permite filtrar por responsable, fuente y dimension analitica sin perder trazabilidad.
+- `scraper_origen`
 
 ## Tabla de atributos
 
-| Integrante | Etiqueta | Descripcion |
-| --- | --- | --- |
-| Nicol Castillo | `fuente_sitio` | Organizacion o fuente publica de origen |
-| Nicol Castillo | `dataset` | Dataset especifico dentro de la fuente |
-| Nicol Castillo | `url_origen` | URL desde la que se obtuvo el dato |
-| Nicol Castillo | `grupo` | Identificador del grupo de trabajo |
-| Nicol Castillo | `integrante` | Responsable del registro |
-| Nicol Castillo | `tema` | Tema general del proyecto |
-| Nicol Castillo | `fecha_extraccion` | Momento de carga o extraccion |
-| Nicol Castillo | `pais` | Pais del registro |
-| Nicol Castillo | `region` | Estado, region o ubicacion geografica |
-| Nicol Castillo | `periodo` | Ano comparable del dato |
-| Nicol Castillo | `indicador` | Dimension analitica principal |
-| Nicol Castillo | `categoria_energia` | Clasificacion general de energia |
-| Nicol Castillo | `tecnologia` | Tecnologia o fuente especifica |
-| Nicol Castillo | `actor` | Productor, propietario o actor asociado |
-| Nicol Castillo | `item` | Identificador analitico del registro |
-| Nicol Castillo | `valor` | Valor numerico limpio |
-| Nicol Castillo | `unidad` | Unidad de medida |
-| Nicol Castillo | `scraper_origen` | Modulo que produjo el dato |
+| Etiqueta | Descripcion |
+| --- | --- |
+| `fuente_sitio` | Organizacion o fuente publica de origen |
+| `dataset` | Dataset especifico dentro de la fuente |
+| `url_origen` | URL desde la que se obtuvo el dato |
+| `grupo` | Identificador del grupo de trabajo |
+| `integrante` | Responsable del registro cuando el scraper lo informa |
+| `tema` | Tema general del proyecto |
+| `fecha_extraccion` | Momento de carga o extraccion |
+| `pais` | Pais del registro |
+| `region` | Estado, region o ubicacion geografica |
+| `periodo` | Ano o periodo comparable del dato |
+| `indicador` | Dimension analitica principal |
+| `categoria_energia` | Clasificacion general de energia |
+| `tecnologia` | Tecnologia o fuente especifica |
+| `actor` | Productor, propietario, integrante o actor asociado |
+| `item` | Identificador analitico del registro |
+| `valor` | Valor numerico limpio |
+| `unidad` | Unidad de medida |
+| `scraper_origen` | Modulo que produjo el dato |
 
-## Evidencias solicitadas
+## Evidencias
 
-La pauta pide adjuntar dos capturas en el README o en el repositorio:
+La pauta pide adjuntar:
 
-1. Evidencia 1: `docker stats` mostrando consumo de contenedores.
-2. Evidencia 2: conteo de documentos en MongoDB (`db.coleccion.countDocuments()`).
+1. Captura de `docker stats`.
+2. Captura de conteo de documentos en MongoDB.
 
-Se dejo la carpeta `docs/evidencias/` para agregar esas imagenes antes del cierre final del hito.
+Evidencias disponibles:
 
-Comandos sugeridos para obtenerlas:
+- `docs/evidencias/docker-stats.png`
+- `docs/evidencias/mongo-count.png`
+- `docs/evidencias/docker_stats_thalia.png`
+- `docs/evidencias/conteo_mongodb_thalia.png`
+
+Comandos sugeridos para nuevas evidencias:
 
 ```bash
 docker stats --no-stream
@@ -135,14 +137,23 @@ docker stats --no-stream
 db.union_semana7.countDocuments()
 ```
 
-## Actividad Git
+## Estado frente a la pauta
 
-La rama individual `feature/Nicol-Castillo` contiene actividad distribuida en varias semanas, incluyendo preparacion de entorno, integracion, visualizacion y ajuste del ano comun para comparacion consistente.
+| Requisito | Estado |
+| --- | --- |
+| 500 registros por integrante | Cumplido por los scrapers integrados |
+| 8 o mas etiquetas | Cumplido |
+| App + DB en Docker Compose | Cumplido |
+| Persistencia con volumes | Cumplido con `mongo_data` |
+| Estructura NoSQL | Cumplido con coleccion comun y campos de trazabilidad |
+| Tipos correctos en MongoDB | Cumplido por normalizacion de `valor` y `periodo` |
+| Actualizar en vez de duplicar | Cumplido con `upsert` |
+| Merge a `main` | Cumplido mediante merge de ramas individuales |
 
 ## Archivos principales
 
 - `main.py`: orquestador de scrapers, limpieza con Spark y carga a Mongo.
-- `scrapers/scraper_nicol_castillo.py`: scraper e integracion del aporte individual.
-- `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`: revision de resultados en Jupyter.
+- `scrapers/`: carpeta de scrapers integrados.
 - `docker-compose.yml`: coordinacion de servicios.
-- `Dockerfile.codex`: dependencias para scraping, Spark y conectores MongoDB.
+- `Dockerfile`: dependencias para scraping, Spark y conectores MongoDB.
+- `docs/evidencias/`: capturas de evidencia.
