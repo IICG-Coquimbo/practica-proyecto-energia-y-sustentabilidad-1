@@ -21,7 +21,8 @@ RUN curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://br
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas pyspark==3.5.0
+    pip install --no-cache-dir "pymongo[srv]" dnspython certifi selenium webdriver-manager pandas pyspark==3.5.0 \
+    scikit-learn seaborn matplotlib openpyxl xlrd
 
 RUN rm -f /usr/local/spark/jars/mongo-spark-connector* \
     && rm -f /usr/local/spark/jars/mongodb-driver* \

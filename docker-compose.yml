@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8889:8888"   # Jupyter Lab
-      - "6081:6080"   # Visualizador del scraper (VNC)
-      - "4041:4040"   # Spark UI
+      - "${JUPYTER_PORT:-8889}:8888"   # Jupyter Lab
+      - "${VNC_PORT:-6081}:6080"        # Visualizador del scraper (VNC)
+      - "${SPARK_UI_PORT:-4041}:4040"   # Spark UI
     volumes:
       - .:/home/jovyan/work
     environment:
@@ -23,7 +23,7 @@ services:
   database:
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "${MONGO_PORT:-27018}:27017"
     volumes:
       - mongo_data:/data/db
     restart: always
@@ -33,7 +33,7 @@ services:
   admin-db:
     image: mongo-express:latest
     ports:
-      - "8083:8081"
+      - "${MONGO_EXPRESS_PORT:-8083}:8081"
     environment:
       - ME_CONFIG_MONGODB_URL=mongodb://database:27017/
     depends_on:

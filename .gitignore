@@ -10,3 +10,8 @@ Energy/.ipynb_checkpoints/Untitled4-checkpoint.ipynb
 
 semanas/**/salidas/*.csv
 semanas/**/salidas/*.json
+semanas/**/salidas/*.parquet/
+semanas/**/modelos/
+!semanas/Semana 9 EDA Huella Carbono/salidas/huella_carbono_limpia.csv
+!semanas/Semana 12 Modelos Huella Carbono/salidas/resultados_clasificacion.csv
+!semanas/Semana 12 Modelos Huella Carbono/salidas/resultados_regresion.csv

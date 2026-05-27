@@ -1,0 +1,5 @@
+modelo,accuracy
+Arbol de Decision,0.9795918367346939
+Random Forest,0.9795918367346939
+SVM OneVsRest,1.0
+Regresion Logistica,1.0

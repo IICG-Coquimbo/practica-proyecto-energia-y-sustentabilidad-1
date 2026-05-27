@@ -157,3 +157,41 @@ db.union_semana7.countDocuments()
 - `docker-compose.yml`: coordinacion de servicios.
 - `Dockerfile`: dependencias para scraping, Spark y conectores MongoDB.
 - `docs/evidencias/`: capturas de evidencia.
+
+## Semanas 9 a 12: huella de carbono
+
+Este avance conserva la coleccion grupal `proyecto_bigdata.union_semana7` y utiliza
+los datos de energia ya recolectados. La variable ambiental construida es la
+intensidad de carbono:
+
+```text
+intensidad_kgco2_mwh = emisiones_tco2 / generacion_mwh * 1000
+```
+
+Los registros se comparan por `region`, `periodo`, `tecnologia` y
+`categoria_energia`, cruzando generacion electrica con emisiones de CO2.
+
+| Semana | Trabajo implementado | Archivo principal |
+| --- | --- | --- |
+| 9 | Limpieza Spark, indicador de huella, estadisticas y EDA | `semanas/Semana 9 EDA Huella Carbono/Semana9_EDA_Huella_Carbono.ipynb` |
+| 10 | Estandarizacion, PCA, K-Means, metodo del codo y DBSCAN | `semanas/Semana 10 Clustering Huella Carbono/Semana10_Clustering_Huella_Carbono.ipynb` |
+| 12 | Pseudo-etiquetas, clasificacion y regresion de intensidad | `semanas/Semana 12 Modelos Huella Carbono/Semana12_Modelos_Huella_Carbono.ipynb` |
+
+El respaldo CSV de la tabla limpia queda en
+`semanas/Semana 9 EDA Huella Carbono/salidas/huella_carbono_limpia.csv` y las
+metricas en `semanas/Semana 12 Modelos Huella Carbono/salidas/`. Los archivos
+Parquet y modelos Spark se regeneran al ejecutar los notebooks, mientras las
+graficas de evidencia quedan en `docs/evidencias_semanas_9_12/`.
+
+### Ejecucion
+
+Con los servicios levantados mediante `docker compose up -d --build`, abrir
+JupyterLab en `http://localhost:8889` y ejecutar los notebooks en orden:
+Semana 9, Semana 10 y Semana 12.
+
+Si otro avance del grupo ya ocupa esos puertos, se pueden seleccionar otros
+sin modificar sus contenedores, por ejemplo:
+
+```powershell
+$env:JUPYTER_PORT="8890"; $env:VNC_PORT="6082"; $env:SPARK_UI_PORT="4042"; $env:MONGO_PORT="27019"; $env:MONGO_EXPRESS_PORT="8084"; docker compose up -d --build
+```
