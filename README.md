@@ -139,10 +139,54 @@ db.union_semana7.countDocuments()
 
 La rama individual `feature/Nicol-Castillo` contiene actividad distribuida en varias semanas, incluyendo preparacion de entorno, integracion, visualizacion y ajuste del ano comun para comparacion consistente.
 
+## Semana 9: Procesamiento con Spark y EDA
+
+La entrega extiende la integracion de Semana 7 usando los registros EIA del periodo comun. Los datos CNE permanecen disponibles en la coleccion, pero se excluyen de las relaciones generacion-emisiones porque representan proyectos en `MW` y no energia generada en `MWh`.
+
+Notebook principal:
+
+- `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`
+
+Script reproducible:
+
+- `semanas/Semana 9 EDA Spark/eda_semana9.py`
+
+El analisis lee MongoDB mediante Spark y usa automaticamente el CSV de Semana 7 como respaldo si Mongo no esta disponible. Incluye limpieza y deduplicacion, revision de nulos, creacion de intensidad de CO2 (`toneladas CO2 / MWh`), participacion de generacion, transformaciones logaritmicas, puntaje z, outliers IQR, asimetria, correlaciones Pearson/Spearman y graficos.
+
+### Ejecucion
+
+Primero levante el entorno actualizado:
+
+```bash
+docker compose up -d --build
+```
+
+En una instalacion nueva o si la coleccion MongoDB esta vacia, genere primero la base integrada de Semana 7:
+
+```bash
+docker compose exec workspace bash -lc "cd /home/jovyan/work && python main.py"
+```
+
+Luego abra Jupyter en `http://localhost:8889/lab` y ejecute:
+
+- `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`
+
+Las salidas se escriben en las carpetas `salidas/` de cada semana, incluyendo CSV analiticos y figuras PNG. Para probar Semana 9 solamente con el CSV local, se puede definir `FUENTE_DATOS=csv` antes de ejecutar el script.
+
+### Resultados verificados
+
+La ejecucion en Docker leyendo `proyecto_bigdata.union_semana7` mediante Spark-MongoDB produjo:
+
+- `3.180` documentos de entrada y `2.152` registros EIA limpios.
+- `80` perfiles region-categoria con generacion y emisiones comparables.
+- `6` perfiles atipicos segun IQR de intensidad CO2.
+- Correlacion Pearson generacion-emisiones: `0,9484`.
+
 ## Archivos principales
 
 - `main.py`: orquestador de scrapers, limpieza con Spark y carga a Mongo.
 - `scrapers/scraper_nicol_castillo.py`: scraper e integracion del aporte individual.
 - `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`: revision de resultados en Jupyter.
+- `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`: EDA, correlaciones y variables derivadas.
 - `docker-compose.yml`: coordinacion de servicios.
 - `Dockerfile.jupyter`: dependencias para scraping, Spark y conectores MongoDB.
