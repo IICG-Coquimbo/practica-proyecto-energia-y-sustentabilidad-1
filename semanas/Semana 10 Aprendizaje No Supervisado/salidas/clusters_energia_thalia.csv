@@ -1,0 +1,501 @@
+item,pais,tecnologia,categoria_energia,capacidad_mw,prediction,cluster_dbscan
+Kajaki Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,33.0,0,0
+Kandahar DOG - Solar,Afghanistan,Solar,Renovable,10.0,0,0
+Kandahar JOL - Solar,Afghanistan,Solar,Renovable,10.0,0,0
+Mahipar Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,66.0,0,0
+Naghlu Dam Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,100.0,0,0
+Nangarhar (Darunta) Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,11.55,0,0
+Northwest Kabul Power Plant Afghanistan - Gas,Afghanistan,Gas,Fosil,42.0,2,1
+Pul-e-Khumri Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,6.0,0,0
+Sarobi Dam Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,Renovable,22.0,0,0
+Bistrica 1 - Hydro,Albania,Hydro,Renovable,27.0,0,0
+Fierza - Hydro,Albania,Hydro,Renovable,500.0,0,0
+Koman - Hydro,Albania,Hydro,Renovable,600.0,0,0
+Lanabregas - Hydro,Albania,Hydro,Renovable,5.0,0,0
+Shkopet - Hydro,Albania,Hydro,Renovable,24.0,0,0
+Ulez - Hydro,Albania,Hydro,Renovable,25.0,0,0
+Vau i Dijes - Hydro,Albania,Hydro,Renovable,250.0,0,0
+Vlora - Other,Albania,Other,Fosil,98.0,0,0
+Adrar - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ain Azel - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ain Djasser - Gas,Algeria,Gas,Fosil,520.0,2,1
+Ain Sekhouna - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ain el Ibel I - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ain el Ibel II - Solar,Algeria,Solar,Renovable,53.0,0,0
+Ain el Melh - Solar,Algeria,Solar,Renovable,20.0,0,0
+Algerie Sud-Ouest - Solar,Algeria,Solar,Renovable,43.5,0,0
+Annaba - Gas,Algeria,Gas,Fosil,71.0,2,1
+Aoulef - Solar,Algeria,Solar,Renovable,5.0,0,0
+Arbaa - Gas,Algeria,Gas,Fosil,560.0,2,1
+Bir Rebaa - Solar,Algeria,Solar,Renovable,10.0,0,0
+Boufarik 1 - Gas,Algeria,Gas,Fosil,100.0,2,1
+Boufarik 2 - Gas,Algeria,Gas,Fosil,450.0,2,1
+Boutelilis - Gas,Algeria,Gas,Fosil,450.0,2,1
+Chelghoum El Aïd - Solar,Algeria,Solar,Renovable,15.0,0,0
+El Kheneg - Solar,Algeria,Solar,Renovable,60.0,0,0
+F'Krina - Gas,Algeria,Gas,Fosil,292.0,2,1
+HPC Ouargla - Solar,Algeria,Solar,Renovable,30.0,0,0
+Hadjret Ennous - Gas,Algeria,Gas,Fosil,1200.0,1,1
+Hamma 2 - Gas,Algeria,Gas,Fosil,418.0,2,1
+Hassi Messaoud Mobile - Gas,Algeria,Gas,Fosil,72.0,2,1
+Hassi Messoud - Gas,Algeria,Gas,Fosil,600.0,2,1
+Hassi Messoud Nord 2 - Gas,Algeria,Gas,Fosil,200.0,2,1
+Hassi Messoud Ouest - Gas,Algeria,Gas,Fosil,492.0,2,1
+Hassi R'mel ISCC - Solar,Algeria,Solar,Renovable,20.0,0,0
+Hauts Plateaux Centre - Solar,Algeria,Solar,Renovable,106.6,0,0
+Hauts Plateaux Est - Solar,Algeria,Solar,Renovable,73.8,0,0
+Ighil Emda - Hydro,Algeria,Hydro,Renovable,24.0,0,0
+In Salah - Solar,Algeria,Solar,Renovable,5.0,0,0
+Jijel - Gas,Algeria,Gas,Fosil,588.0,2,1
+Kahrama IPP - Gas,Algeria,Gas,Fosil,345.0,2,1
+Koudiet Eddraouch - Gas,Algeria,Gas,Fosil,1200.0,1,1
+Labiodh Sidi Cheikh - Solar,Algeria,Solar,Renovable,20.0,0,0
+Labreg - Gas,Algeria,Gas,Fosil,396.0,2,1
+Marsat - Gas,Algeria,Gas,Fosil,840.0,1,1
+Marsat TG - Gas,Algeria,Gas,Fosil,184.0,2,1
+Msila 1 - Gas,Algeria,Gas,Fosil,980.0,1,1
+Naâma - Solar,Algeria,Solar,Renovable,19.9,0,0
+Oued El Kebrit - Solar,Algeria,Solar,Renovable,15.0,0,0
+Oued el Ma - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ras Djinet - Gas,Algeria,Gas,Fosil,672.0,1,1
+Ras el Oued - Solar,Algeria,Solar,Renovable,20.0,0,0
+Ravin Blanc - Gas,Algeria,Gas,Fosil,73.0,2,1
+Reggane - Solar,Algeria,Solar,Renovable,5.0,0,0
+Relizane - Gas,Algeria,Gas,Fosil,465.0,2,1
+SKB IPP - Gas,Algeria,Gas,Fosil,484.0,2,1
+SKS IPP SNC Lavalin - Gas,Algeria,Gas,Fosil,815.0,1,1
+SPP1 Thermal - Gas,Algeria,Gas,Fosil,150.0,2,1
+Skikda - Gas,Algeria,Gas,Fosil,262.0,2,1
+Tamanrasset - Solar,Algeria,Solar,Renovable,13.0,0,0
+Terga - Gas,Algeria,Gas,Fosil,1200.0,1,1
+Tiaret - Gas,Algeria,Gas,Fosil,300.0,2,1
+Tilghemt 1 - Gas,Algeria,Gas,Fosil,200.0,2,1
+Tilghemt 2 - Gas,Algeria,Gas,Fosil,600.0,2,1
+Timimoun - Solar,Algeria,Solar,Renovable,9.0,0,0
+Tindouf - Solar,Algeria,Solar,Renovable,9.0,0,0
+Télagh - Solar,Algeria,Solar,Renovable,12.0,0,0
+Zaouiet Kounta - Solar,Algeria,Solar,Renovable,6.0,0,0
+Biopio - Oil,Angola,Oil,Fosil,22.8,2,1
+Biopio (hydro) - Hydro,Angola,Hydro,Renovable,14.6,0,0
+Cambambe - Hydro,Angola,Hydro,Renovable,180.0,0,0
+Capanda - Hydro,Angola,Hydro,Renovable,520.0,0,0
+Cazenga - Gas,Angola,Gas,Fosil,132.0,2,1
+Huambo - Oil,Angola,Oil,Fosil,16.26,2,1
+Lobito - Gas,Angola,Gas,Fosil,20.0,2,1
+Luanda Diesel - Oil,Angola,Oil,Fosil,58.0,2,1
+Luanda Refinery - Oil,Angola,Oil,Fosil,18.5,2,1
+Malongo - Oil,Angola,Oil,Fosil,10.0,2,1
+Matala - Hydro,Angola,Hydro,Renovable,40.0,0,0
+Namibe - Gas,Angola,Gas,Fosil,11.68,2,1
+Rio Luachimo - Hydro,Angola,Hydro,Renovable,16.0,0,0
+Xitoto - Oil,Angola,Oil,Fosil,11.34,2,1
+McMurdo Station Generator - Oil,Antarctica,Oil,Fosil,6.6,2,1
+Ross Island - Wind,Antarctica,Wind,Renovable,1.0,0,0
+AGUA DEL CAJON (AUTOGENERADOR DEL MEM) - Other,Argentina,Other,Fosil,479.2,0,0
+AGUA DEL CAJON (GENERADOR DEL MEM) - Gas,Argentina,Gas,Fosil,192.0,2,1
+AGUA DEL TORO - Hydro,Argentina,Hydro,Renovable,130.0,0,0
+ALICURA - Hydro,Argentina,Hydro,Renovable,1050.0,1,0
+ALMIRANTE BROWN - Oil,Argentina,Oil,Fosil,25.0,2,1
+ALTO VALLE - Gas,Argentina,Gas,Fosil,97.5,2,1
+ALUMINE - Oil,Argentina,Oil,Fosil,1.904,2,1
+ALVAREZ CONDARCO - Hydro,Argentina,Hydro,Renovable,50.7,0,0
+ARROYITO - Hydro,Argentina,Hydro,Renovable,128.0,0,0
+ATUCHA I - Nuclear,Argentina,Nuclear,Fosil,370.0,0,0
+ATUCHA II - Nuclear,Argentina,Nuclear,Fosil,745.0,1,0
+BANDERA - Oil,Argentina,Oil,Fosil,31.0,2,1
+BARILOCHE (PUERTO  MORENO) - Oil,Argentina,Oil,Fosil,5.736000000000001,2,1
+BENJAMIN REOLIN - Hydro,Argentina,Hydro,Renovable,38.4,0,0
+BERNARDO  DE IRIGOYEN - Oil,Argentina,Oil,Fosil,2.096,2,1
+C.T. RUFINO - Oil,Argentina,Oil,Fosil,31.9,2,1
+C.T. SAN VICENTE - Oil,Argentina,Oil,Fosil,27.6,2,1
+CAA CATI - Oil,Argentina,Oil,Fosil,1.415,2,1
+CABRA CORRAL - Hydro,Argentina,Hydro,Renovable,102.0,0,0
+CACHEUTA (NUEVA) - Hydro,Argentina,Hydro,Renovable,120.0,0,0
+CACHI - Oil,Argentina,Oil,Fosil,1.07,2,1
+CAFAYATE - Oil,Argentina,Oil,Fosil,4.182,2,1
+CAPITAL CATAMARCA - PREDIO CHOYA - Oil,Argentina,Oil,Fosil,5.728,2,1
+CAPITAL CATAMARCA - PREDIO EX CARCEL - Oil,Argentina,Oil,Fosil,7.075,2,1
+CAPITAL CATAMARCA - PREDIO RIPIERA - Oil,Argentina,Oil,Fosil,4.675,2,1
+CASA DE PIEDRA - Hydro,Argentina,Hydro,Renovable,60.0,0,0
+CASSAFFOUSTH - Hydro,Argentina,Hydro,Renovable,17.28,0,0
+CENTRAL BAHIA BLANCA (PIEDRA BUENA) SA - Coal,Argentina,Coal,Fosil,620.0,1,0
+CENTRAL LOMA DE LA LATA SA - Gas,Argentina,Gas,Fosil,540.0,2,1
+CENTRAL PARQUE INDUSTRIAL LA BANDA - Oil,Argentina,Oil,Fosil,11.228,2,1
+CENTRAL T.GENELBA - Gas,Argentina,Gas,Fosil,673.6,1,1
+CENTRAL T.GENELBA PLUS - Gas,Argentina,Gas,Fosil,164.55,2,1
+CENTRAL TERMICA BRIGADIER LOPEZ (ENARSA) - Gas,Argentina,Gas,Fosil,280.0,2,1
+CENTRAL TERMICA DE CICLO COMBINADO SALTA - Gas,Argentina,Gas,Fosil,643.0,1,1
+CENTRAL TERMICA GÜEMES SA - Coal,Argentina,Coal,Fosil,361.0,0,0
+CENTRAL TERMICA LA BANDA - Gas,Argentina,Gas,Fosil,32.0,2,1
+CENTRAL TERMICA PIQUIRENDA SA - Oil,Argentina,Oil,Fosil,30.44,2,1
+CENTRAL TERMICA REMEDIOS DE ESCALADA - Oil,Argentina,Oil,Fosil,25.0,2,1
+CENTRAL TERMOELECTRICA GUILLERMO BROWN - Gas,Argentina,Gas,Fosil,524.0,2,1
+CENTRAL TERMOELECTRICA MANUEL BELGRANO - Gas,Argentina,Gas,Fosil,868.2,1,1
+CENTRAL TERMOELECTRICA TIMBUES - Gas,Argentina,Gas,Fosil,865.1400000000001,1,1
+CH LOS CARACOLES - Hydro,Argentina,Hydro,Renovable,121.4,0,0
+CHILECITO - Oil,Argentina,Oil,Fosil,5.0,2,1
+CHIMBERA 1 - Solar,Argentina,Solar,Renovable,2.0,0,0
+CIPOLLETTI - Hydro,Argentina,Hydro,Renovable,5.78,0,0
+COMANDANTE ANDRESITO - Oil,Argentina,Oil,Fosil,2.372,2,1
+COMODORO RIVADAVIA - Gas,Argentina,Gas,Fosil,141.02,2,1
+COMODORO RIVADAVIA - ANTONIO MORAN - Wind,Argentina,Wind,Renovable,16.56,0,0
+CORRIENTES - Oil,Argentina,Oil,Fosil,1.4,2,1
+COSTANERA - Coal,Argentina,Coal,Fosil,1982.2,1,-1
+CRUZ DE PIEDRA - Gas,Argentina,Gas,Fosil,17.94,2,1
+CRUZ DEL EJE - Oil,Argentina,Oil,Fosil,5.052,2,1
+CT 13 DE JULIO - Gas,Argentina,Gas,Fosil,26.0,2,1
+CT ALEM - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT ALUMINE - Oil,Argentina,Oil,Fosil,6.3,2,1
+CT ARISTOBULO DEL VALLE - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT ARRECIFES - Oil,Argentina,Oil,Fosil,20.0,2,1
+CT AÑATUYA - Oil,Argentina,Oil,Fosil,19.2,2,1
+CT AÑATUYA II - Oil,Argentina,Oil,Fosil,11.5,2,1
+CT BARILOCHE - Oil,Argentina,Oil,Fosil,20.0,2,1
+CT BELL VILLE - Oil,Argentina,Oil,Fosil,15.62,2,1
+CT BRAGADO - Gas,Argentina,Gas,Fosil,49.8,2,1
+CT CAPITAN SARMIENTO - Oil,Argentina,Oil,Fosil,5.0,2,1
+CT CATAMARCA - Oil,Argentina,Oil,Fosil,19.2,2,1
+CT CAVIAHUE - Oil,Argentina,Oil,Fosil,5.0,2,1
+CT CERES - Oil,Argentina,Oil,Fosil,18.0,2,1
+CT CHARATA - Oil,Argentina,Oil,Fosil,19.4,2,1
+CT CHILECITO - Oil,Argentina,Oil,Fosil,10.0,2,1
+CT CIPOLLETTI - Oil,Argentina,Oil,Fosil,5.0,2,1
+CT COLON BUENOS AIRES - Oil,Argentina,Oil,Fosil,15.3,2,1
+CT CONCEPCION DEL URUGUAY - Gas,Argentina,Gas,Fosil,41.78,2,1
+CT CORRIENTES - Oil,Argentina,Oil,Fosil,20.0,2,1
+CT ECOENERGIA (PETROBRAS) - Coal,Argentina,Coal,Fosil,13.2,0,0
+CT ENSENADA DE BARRAGAN - Gas,Argentina,Gas,Fosil,567.0,2,1
+CT ESQUINA - Oil,Argentina,Oil,Fosil,16.5,2,1
+CT FORMOSA II - Oil,Argentina,Oil,Fosil,30.0,2,1
+CT GENERAL VILLEGAS - Oil,Argentina,Oil,Fosil,23.49,2,1
+CT GOYA - Oil,Argentina,Oil,Fosil,13.0,2,1
+CT INDEPENDENCIA - Gas,Argentina,Gas,Fosil,120.0,2,1
+CT INGENIERO JUAREZ - Oil,Argentina,Oil,Fosil,4.0,2,1
+CT INTA CATAMARCA - Oil,Argentina,Oil,Fosil,7.04,2,1
+CT ISLA VERDE - Oil,Argentina,Oil,Fosil,24.5,2,1
+CT JUAN JOSE CASTELLI - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT JUNIN - Oil,Argentina,Oil,Fosil,22.0,2,1
+CT LA PLATA - Oil,Argentina,Oil,Fosil,40.4,2,1
+CT LA RIOJA DELIVERY - Oil,Argentina,Oil,Fosil,19.2,2,1
+CT LA RIOJA SUR - Oil,Argentina,Oil,Fosil,10.0,2,1
+CT LAGUNA BLANCA - Oil,Argentina,Oil,Fosil,7.0,2,1
+CT LAS ARMAS - Gas,Argentina,Gas,Fosil,10.4,2,1
+CT LAS ARMAS II - Gas,Argentina,Gas,Fosil,23.37,2,1
+CT LAS PALMAS - Oil,Argentina,Oil,Fosil,6.0,2,1
+CT LIBERTADOR GENERAL SAN MARTIN - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT LINCOLN - Oil,Argentina,Oil,Fosil,15.002,2,1
+CT LOBOS - Oil,Argentina,Oil,Fosil,15.686,2,1
+CT MAGDALENA - Oil,Argentina,Oil,Fosil,25.0,2,1
+CT MATHEU - Gas,Argentina,Gas,Fosil,41.0,2,1
+CT MEDANITOS (RINCON DE LOS SAUCES) - Oil,Argentina,Oil,Fosil,32.0,2,1
+CT MIRAMAR I - Oil,Argentina,Oil,Fosil,20.0,2,1
+CT OLAVARRIA - Gas,Argentina,Gas,Fosil,38.8,2,1
+CT ORAN - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT PARANA - Gas,Argentina,Gas,Fosil,40.0,2,1
+CT PARQUE INDUSTRIAL CATAMARCA - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT PASO DE LA PATRIA - Oil,Argentina,Oil,Fosil,7.2,2,1
+CT PEHUAJO - Oil,Argentina,Oil,Fosil,22.4,2,1
+CT PINAMAR - Gas,Argentina,Gas,Fosil,21.0,2,1
+CT PIRANE - Oil,Argentina,Oil,Fosil,16.25,2,1
+CT PLUSPETROL NORTE - Gas,Argentina,Gas,Fosil,246.0,2,1
+CT RAFAELA - Oil,Argentina,Oil,Fosil,19.2,2,1
+CT REALICO - Oil,Argentina,Oil,Fosil,24.0,2,1
+CT ROCA - Gas,Argentina,Gas,Fosil,130.0,2,1
+CT SAENZ PEÑA  I - Oil,Argentina,Oil,Fosil,20.0,2,1
+CT SAENZ PEÑA  II - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT SALTO - Oil,Argentina,Oil,Fosil,22.5,2,1
+CT SAN MARTIN NORTE III - Oil,Argentina,Oil,Fosil,5.1000000000000005,2,1
+CT SAN MIGUEL DE TUCUMAN - Gas,Argentina,Gas,Fosil,396.62,2,1
+CT SAN MIGUEL NORTE III - Oil,Argentina,Oil,Fosil,11.5,2,1
+CT SANTA ROSA - Oil,Argentina,Oil,Fosil,6.0,2,1
+CT TARTAGAL - Oil,Argentina,Oil,Fosil,10.0,2,1
+CT TEREVINTOS - Oil,Argentina,Oil,Fosil,8.0,2,1
+CT TINOGASTA - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT TUCUMAN - Gas,Argentina,Gas,Fosil,438.0,2,1
+CT VENADO TUERTO - Oil,Argentina,Oil,Fosil,19.2,2,1
+CT VIALE - Oil,Argentina,Oil,Fosil,10.0,2,1
+CT VILLA ANGELA - Oil,Argentina,Oil,Fosil,15.0,2,1
+CT VILLA REGINA - Oil,Argentina,Oil,Fosil,5.0,2,1
+CUESTA DEL VIENTO - Hydro,Argentina,Hydro,Renovable,10.55,0,0
+Cafayate - Solar,Argentina,Solar,Renovable,80.0,0,0
+Caldenes del Oeste - Solar,Argentina,Solar,Renovable,30.0,0,0
+Cauchari - Solar,Argentina,Solar,Renovable,300.0,0,0
+DEAN FUNES - Gas,Argentina,Gas,Fosil,70.12,2,1
+DIQUE - Gas,Argentina,Gas,Fosil,68.44,2,1
+DOCK SUD - Gas,Argentina,Gas,Fosil,872.3,1,1
+EL CADILLAL - Hydro,Argentina,Hydro,Renovable,14.0,0,0
+EL CARRIZAL - Hydro,Argentina,Hydro,Renovable,17.0,0,0
+EL CHOCON - Hydro,Argentina,Hydro,Renovable,1200.0,1,0
+EL TIGRE - Hydro,Argentina,Hydro,Renovable,14.4,0,0
+EL TUNAL - Hydro,Argentina,Hydro,Renovable,11.0,0,0
+EMBALSE - Nuclear,Argentina,Nuclear,Fosil,648.0,1,0
+ESCABA - Hydro,Argentina,Hydro,Renovable,24.0,0,0
+ESQUINA - Oil,Argentina,Oil,Fosil,2.215,2,1
+EX CENTRAL BUENOS AIRES - Gas,Argentina,Gas,Fosil,321.0,2,1
+FILO MORADO - Gas,Argentina,Gas,Fosil,67.5,2,1
+FITZ SIMON - Hydro,Argentina,Hydro,Renovable,10.8,0,0
+FLORENTINO AMEGHINO - Hydro,Argentina,Hydro,Renovable,60.0,0,0
+FUTALEUFU - Hydro,Argentina,Hydro,Renovable,472.0,0,0
+GENERACION FRIAS SA - Gas,Argentina,Gas,Fosil,60.0,2,1
+GENERAL ACHA - Wind,Argentina,Wind,Renovable,1.8,0,0
+GENERAL LEVALLE - Gas,Argentina,Gas,Fosil,72.78,2,1
+GENERAL SAN MARTIN - Hydro,Argentina,Hydro,Renovable,6.0,0,0
+GOYA - Oil,Argentina,Oil,Fosil,1.33,2,1
+GOYA (ELECTROPATAGONIA SA) - Gas,Argentina,Gas,Fosil,17.3,2,1
+GUILLERMO CESPEDES - Hydro,Argentina,Hydro,Renovable,5.2,0,0
+H. PICHI PICUN LEUFU - Hydro,Argentina,Hydro,Renovable,285.0,0,0
+ISLA VERDE - Oil,Argentina,Oil,Fosil,3.115,2,1
+ITA IBATE - Oil,Argentina,Oil,Fosil,1.052,2,1
+ITUZAINGO - Oil,Argentina,Oil,Fosil,1.33,2,1
+Iglesia-Guañizuil - Solar,Argentina,Solar,Renovable,80.0,0,0
+JULIAN  ROMERO - Hydro,Argentina,Hydro,Renovable,6.2,0,0
+LA CRUZ - Oil,Argentina,Oil,Fosil,1.33,2,1
+LA PLATA COGENERACION - Gas,Argentina,Gas,Fosil,128.0,2,1
+LA RIOJA - Oil,Argentina,Oil,Fosil,42.0,2,1
+LA TABLADA - Gas,Argentina,Gas,Fosil,22.15,2,1
+LA VIÑA - Hydro,Argentina,Hydro,Renovable,16.0,0,0
+LAS MADERAS - Hydro,Argentina,Hydro,Renovable,30.0,0,0
+LOS CORONELES (EX 25  DE MAYO) - Hydro,Argentina,Hydro,Renovable,6.6000000000000005,0,0
+LOS MOLINOS I - Hydro,Argentina,Hydro,Renovable,59.04,0,0
+LOS MOLINOS II - Hydro,Argentina,Hydro,Renovable,4.5,0,0
+LOS QUIROGA - Hydro,Argentina,Hydro,Renovable,2.5,0,0
+LOS REYUNOS - Hydro,Argentina,Hydro,Renovable,224.0,0,0
+LUJAN DE CUYO - Gas,Argentina,Gas,Fosil,549.76,2,1
+MAR DE AJO - Gas,Argentina,Gas,Fosil,34.0,2,1
+MAR DEL PLATA (9 DE JULIO) - Gas,Argentina,Gas,Fosil,201.3,2,1
+MAYOR BURATOVICH - Wind,Argentina,Wind,Renovable,2.02,0,0
+MBURUCUYA - Oil,Argentina,Oil,Fosil,1.035,2,1
+MERCEDES - Oil,Argentina,Oil,Fosil,2.308,2,1
+MODESTO MARANZANA - Gas,Argentina,Gas,Fosil,250.0,2,1
+NECOCHEA - Coal,Argentina,Coal,Fosil,206.0,0,0
+NIHUIL I - Hydro,Argentina,Hydro,Renovable,74.24,0,0
+NIHUIL II - Hydro,Argentina,Hydro,Renovable,133.12,0,0
+NIHUIL III - Hydro,Argentina,Hydro,Renovable,52.0,0,0
+NIHUIL IV - Hydro,Argentina,Hydro,Renovable,22.4,0,0
+NUEVA ESPERANZA - Oil,Argentina,Oil,Fosil,3.38,2,1
+NUEVO PUERTO - Gas,Argentina,Gas,Fosil,1217.7,1,1
+OBERA (TG Nº21 FIAT ) - Gas,Argentina,Gas,Fosil,17.2,2,1
+ORENSE - Oil,Argentina,Oil,Fosil,1.72,2,1
+PARANA - Other,Argentina,Other,Fosil,845.26,1,0
+PARQUE EOLICO ARAUCO SAPEM I - Wind,Argentina,Wind,Renovable,25.2,0,0
+PARQUE EOLICO ARAUCO SAPEM II - Wind,Argentina,Wind,Renovable,25.2,0,0
+PARQUE EOLICO DIADEMA - Wind,Argentina,Wind,Renovable,6.3,0,0
+PARQUE EOLICO EL TORDILLO - Wind,Argentina,Wind,Renovable,3.0,0,0
+PARQUE EOLICO LOMA BLANCA IV (ENARSA) - Wind,Argentina,Wind,Renovable,50.0,0,0
+PARQUE EOLICO RAWSON I (ENARSA) - Wind,Argentina,Wind,Renovable,48.6,0,0
+PARQUE EOLICO RAWSON II (ENARSA) - Wind,Argentina,Wind,Renovable,28.8,0,0
+PASO DE LOS LIBRES - Oil,Argentina,Oil,Fosil,2.135,2,1
+PATAGONIA - Gas,Argentina,Gas,Fosil,123.7,2,1
+PERUGORRIA - Oil,Argentina,Oil,Fosil,1.11,2,1
+PICO TRUNCADO - JORGE ROMANUTTI - Wind,Argentina,Wind,Renovable,2.4,0,0
+PICO TRUNCADO I - Gas,Argentina,Gas,Fosil,45.6,2,1
+PIEDRA DEL AGUILA (CPSA) - Hydro,Argentina,Hydro,Renovable,1400.0,1,-1
+PIEDRAS MORAS - Hydro,Argentina,Hydro,Renovable,6.3,0,0
+PILAR  BICENTENARIO - Gas,Argentina,Gas,Fosil,467.0,2,1
+PILAR ZANICHELLI - Coal,Argentina,Coal,Fosil,216.0,0,0
+PLANICIE BANDERITA - Hydro,Argentina,Hydro,Renovable,472.0,0,0
+PLANTA PILOTO FOTOVOLTAICA SAN JUAN 1 - Solar,Argentina,Solar,Renovable,1.2,0,0
+PRESIDENTE SARMIENTO - Gas,Argentina,Gas,Fosil,31.5,2,1
+PUEBLO VIEJO - Hydro,Argentina,Hydro,Renovable,19.2,0,0
+PUERTO MADRYN - Gas,Argentina,Gas,Fosil,42.0,2,1
+PUERTO NUEVO - Coal,Argentina,Coal,Fosil,589.0,1,0
+PUNTA ALTA - CENTENARIO - Wind,Argentina,Wind,Renovable,1.8,0,0
+QUEBRADA DE ULLUM - Hydro,Argentina,Hydro,Renovable,45.0,0,0
+RIO CORRALITO - Hydro,Argentina,Hydro,Renovable,13.2,0,0
+RIO CUARTO - Gas,Argentina,Gas,Fosil,35.57,2,1
+RIO GRANDE - Hydro,Argentina,Hydro,Renovable,750.0,1,0
+RIO HONDO - Hydro,Argentina,Hydro,Renovable,19.0,0,0
+SALTO ANDERSEN - Hydro,Argentina,Hydro,Renovable,7.9,0,0
+SALTO GRANDE (MITAD ARGENTINA) - Hydro,Argentina,Hydro,Renovable,945.0,1,0
+SAN FRANCISCO - Gas,Argentina,Gas,Fosil,40.0,2,1
+SAN MARTIN DE LOS ANDES - Oil,Argentina,Oil,Fosil,4.218,2,1
+SAN NICOLAS - Coal,Argentina,Coal,Fosil,644.0,1,0
+SAN PEDRO - Oil,Argentina,Oil,Fosil,2.216,2,1
+SAN ROQUE - Hydro,Argentina,Hydro,Renovable,26.0,0,0
+SANTA ISABEL - Oil,Argentina,Oil,Fosil,2.25,2,1
+SANTO TOME - Oil,Argentina,Oil,Fosil,2.684,2,1
+SORRENTO - Coal,Argentina,Coal,Fosil,226.0,0,0
+SUDOESTE - Gas,Argentina,Gas,Fosil,140.0,2,1
+Saujil - Solar,Argentina,Solar,Renovable,22.5,0,0
+TARTAGAL - Gas,Argentina,Gas,Fosil,17.0,2,1
+TENARIS SIDERCA CETE II - Gas,Argentina,Gas,Fosil,163.20000000000002,2,1
+TOSTADO - Oil,Argentina,Oil,Fosil,3.2,2,1
+ULLUM - Hydro,Argentina,Hydro,Renovable,42.0,0,0
+URUGUA-I - Hydro,Argentina,Hydro,Renovable,120.0,0,0
+VENADO TUERTO - Oil,Argentina,Oil,Fosil,9.1,2,1
+VILLA GESELL - Gas,Argentina,Gas,Fosil,130.0,2,1
+VILLA MARIA (LAS PLAYAS) - Gas,Argentina,Gas,Fosil,48.0,2,1
+VUELTA DE OBLIGADO - Gas,Argentina,Gas,Fosil,560.0,2,1
+YACYRETA - Hydro,Argentina,Hydro,Renovable,1550.0,1,-1
+Armenian-2 - Nuclear,Armenia,Nuclear,Fosil,375.0,0,0
+Hrazadan - Gas,Armenia,Gas,Fosil,1110.0,1,1
+New Yerevan - Gas,Armenia,Gas,Fosil,271.0,2,1
+Sevan-Hrazdan Cascade - Hydro,Armenia,Hydro,Renovable,561.0,0,0
+Shamb - Hydro,Armenia,Hydro,Renovable,170.0,0,0
+Spandaryan - Hydro,Armenia,Hydro,Renovable,76.0,0,0
+Tatev - Hydro,Armenia,Hydro,Renovable,158.0,0,0
+Yerevan - Gas,Armenia,Gas,Fosil,550.0,2,1
+Adelaide Showgrounds - Solar,Australia,Solar,Renovable,1.0,0,0
+Albany Wind Farm - Wind,Australia,Wind,Renovable,21.6,0,0
+Amcor Gawler - Oil,Australia,Oil,Fosil,4.0,2,1
+Angaston - Oil,Australia,Oil,Fosil,50.0,2,1
+Anglesea - Coal,Australia,Coal,Fosil,165.0,0,0
+Angurugu - Oil,Australia,Oil,Fosil,3.6,2,1
+Appin (Mine) - Gas,Australia,Gas,Fosil,55.6,2,1
+Ararat Wind Farm - Wind,Australia,Wind,Renovable,240.0,0,0
+Argyle Diamond Mine - Oil,Australia,Oil,Fosil,32.0,2,1
+Bairnsdale - Gas,Australia,Gas,Fosil,94.0,2,1
+Ballarat Base Hospital - Gas,Australia,Gas,Fosil,3.0,2,1
+Banimboola - Hydro,Australia,Hydro,Renovable,12.85,0,0
+Bankstown Sports Club - Oil,Australia,Oil,Fosil,2.0,2,1
+Bannerton Solar Farm - Solar,Australia,Solar,Renovable,88.0,0,0
+Barcaldine (Len Wishaw) - Gas,Australia,Gas,Fosil,37.0,2,1
+Barcaldine KDB - Solar,Australia,Solar,Renovable,20.0,0,0
+Barcaldine YD - Solar,Australia,Solar,Renovable,10.9,0,0
+Barron Gorge - Hydro,Australia,Hydro,Renovable,60.0,0,0
+Bastyan - Hydro,Australia,Hydro,Renovable,79.9,0,0
+Bayswater - Coal,Australia,Coal,Fosil,2640.0,1,-1
+Belconnen - Waste,Australia,Waste,Fosil,1.0,0,0
+Bell Bay (Bell Bay Three) - Gas,Australia,Gas,Fosil,115.0,2,1
+Bendeela (Shoalhaven Scheme) - Hydro,Australia,Hydro,Renovable,240.0,0,0
+Berrimah - Gas,Australia,Gas,Fosil,10.0,2,1
+Berwick - Waste,Australia,Waste,Fosil,7.2,0,0
+Beryl AU - Solar,Australia,Solar,Renovable,87.0,0,0
+Bidyadanga - Oil,Australia,Oil,Fosil,1.3,2,1
+Blayney Wind Farm - Wind,Australia,Wind,Renovable,9.9,0,0
+Blowering - Hydro,Australia,Hydro,Renovable,70.0,0,0
+Blue Lake Milling Power Plant - Oil,Australia,Oil,Fosil,1.0,2,1
+Bluff Point (Woolnorth) Wind Farm - Wind,Australia,Wind,Renovable,65.0,0,0
+Boco Rock - Wind,Australia,Wind,Renovable,113.0,0,0
+Bodangora Wind Farm - Wind,Australia,Wind,Renovable,113.0,0,0
+Bogong (Mount Beauty Hydro Scheme) - Hydro,Australia,Hydro,Renovable,300.0,0,0
+Braemar 1 - Gas,Australia,Gas,Fosil,504.0,2,1
+Braemar 2 - Gas,Australia,Gas,Fosil,519.0,2,1
+Bremer Bay Diesel Backup - Oil,Australia,Oil,Fosil,1.3,2,1
+Brewer - Gas,Australia,Gas,Fosil,8.5,2,1
+Brisbane BNE - Solar,Australia,Solar,Renovable,6.0,0,0
+Broadmeadows - Waste,Australia,Waste,Fosil,12.2,0,0
+Broadwater - Biomass,Australia,Biomass,Renovable,38.0,0,-1
+Broken Hill - Gas,Australia,Gas,Fosil,50.0,2,1
+Broken Hill Solar Plant - Solar,Australia,Solar,Renovable,53.0,0,0
+Brooklyn - Waste,Australia,Waste,Fosil,2.83,0,0
+Broome - Gas,Australia,Gas,Fosil,39.6,2,1
+Brown Mountain - Hydro,Australia,Hydro,Renovable,4.95,0,0
+Browns Plains - Waste,Australia,Waste,Fosil,2.2,0,0
+Bulwer Island - Gas,Australia,Gas,Fosil,33.0,2,1
+Bungala I - Solar,Australia,Solar,Renovable,110.0,0,0
+Bungala II - Solar,Australia,Solar,Renovable,110.0,0,0
+Burrendong - Hydro,Australia,Hydro,Renovable,19.0,0,0
+Burrinjuck Power Station - Hydro,Australia,Hydro,Renovable,27.0,0,0
+Burrup Peninsula (Karratha Gas Plant) - Gas,Australia,Gas,Fosil,240.0,2,1
+Burrup Peninsula (Pluto Phase 1) - Gas,Australia,Gas,Fosil,160.0,2,1
+Butlers Gorge - Hydro,Australia,Hydro,Renovable,14.4,0,0
+CSIRO Energy Centre - Solar,Australia,Solar,Renovable,1.5,0,0
+Callide A - Coal,Australia,Coal,Fosil,30.0,0,0
+Callide B - Coal,Australia,Coal,Fosil,700.0,1,0
+Callide C - Coal,Australia,Coal,Fosil,840.0,1,0
+Camballin - Gas,Australia,Gas,Fosil,1.04,2,1
+Canning Vale - Waste,Australia,Waste,Fosil,4.0,0,0
+Cannington Mine - Gas,Australia,Gas,Fosil,40.0,2,1
+Canunda Wind Farm - Wind,Australia,Wind,Renovable,46.0,0,0
+Cape Bridgewater Wind Farm - Wind,Australia,Wind,Renovable,58.0,0,0
+Cape Lambert - Gas,Australia,Gas,Fosil,105.0,2,1
+Cape Nelson North Wind Farm - Wind,Australia,Wind,Renovable,22.0,0,0
+Cape Nelson South Wind Farm - Wind,Australia,Wind,Renovable,44.0,0,0
+Cape Preston - Gas,Australia,Gas,Fosil,450.0,2,1
+Cape Sir William Grant Wind Farm - Wind,Australia,Wind,Renovable,54.0,0,0
+Capital Hill Wind Farm - Wind,Australia,Wind,Renovable,140.0,0,0
+Capral (Aluminium Smelter) - Gas,Australia,Gas,Fosil,300.0,2,1
+Carnarvon - Gas,Australia,Gas,Fosil,15.0,2,1
+Catagunya - Hydro,Australia,Hydro,Renovable,48.0,0,0
+Cathedral Rocks Wind Farm - Wind,Australia,Wind,Renovable,66.0,0,0
+Cawse Nickel Mine - Gas,Australia,Gas,Fosil,21.0,2,1
+Cethana - Hydro,Australia,Hydro,Renovable,85.0,0,0
+Challicum Hills Wind Farm - Wind,Australia,Wind,Renovable,52.5,0,0
+Channel Island - Gas,Australia,Gas,Fosil,310.0,2,1
+Charlestown Square - Gas,Australia,Gas,Fosil,2.8,2,1
+Childers - Solar,Australia,Solar,Renovable,75.0,0,0
+Christmas Creek Iron Ore Mine - Oil,Australia,Oil,Fosil,58.0,2,1
+Clare Solar Farm - Solar,Australia,Solar,Renovable,130.0,0,0
+Claytons - Waste,Australia,Waste,Fosil,11.0,0,0
+Clements Gap Wind Farm - Wind,Australia,Wind,Renovable,57.0,0,0
+Clermont Solar Farm - Solar,Australia,Solar,Renovable,100.0,0,0
+Cloudbreak - Oil,Australia,Oil,Fosil,44.0,2,1
+Clover - Hydro,Australia,Hydro,Renovable,30.0,0,0
+Cluny - Hydro,Australia,Hydro,Renovable,17.0,0,0
+Cockburn - Gas,Australia,Gas,Fosil,240.0,2,1
+Codrington Wind Farm - Wind,Australia,Wind,Renovable,18.2,0,0
+Collgar Wind Farm - Wind,Australia,Wind,Renovable,206.0,0,0
+Collie (Bluewaters) - Coal,Australia,Coal,Fosil,416.0,0,0
+Collie A - Coal,Australia,Coal,Fosil,340.0,0,0
+Collinsville - Coal,Australia,Coal,Fosil,190.0,0,0
+Collinsville Solar Farm - Solar,Australia,Solar,Renovable,42.0,0,0
+Colongra - Gas,Australia,Gas,Fosil,724.0,1,1
+Condamine A - Gas,Australia,Gas,Fosil,144.0,2,1
+Condong Sugar Mill - Biomass,Australia,Biomass,Renovable,30.0,0,-1
+Copeton - Hydro,Australia,Hydro,Renovable,24.0,0,0
+Coral Bay Diesel Backup - Oil,Australia,Oil,Fosil,2.24,2,1
+Corio - Waste,Australia,Waste,Fosil,1.0,0,0
+Crookwell Wind Farm - Wind,Australia,Wind,Renovable,4.8,0,0
+Crowlands Wind Farm - Wind,Australia,Wind,Renovable,80.0,0,0
+Cullerin Range Wind Farm - Wind,Australia,Wind,Renovable,30.0,0,0
+Daandine - Gas,Australia,Gas,Fosil,33.0,2,1
+Dampier - Gas,Australia,Gas,Fosil,120.0,2,1
+Darling Downs - Gas,Australia,Gas,Fosil,644.0,1,1
+Darling Downs Solar Farm - Solar,Australia,Solar,Renovable,110.0,0,0
+Darlot Gold Mine - Gas,Australia,Gas,Fosil,11.7,2,1
+Dartmouth (Mount Beauty Hydro Scheme) - Hydro,Australia,Hydro,Renovable,150.0,0,0
+Darwin DRW - Solar,Australia,Solar,Renovable,4.0,0,0
+Daydream Solar Farm  - Solar,Australia,Solar,Renovable,50.0,0,0
+DeGrussa - Solar,Australia,Solar,Renovable,10.6,0,0
+Denham Diesel Backup - Oil,Australia,Oil,Fosil,1.6,2,1
+Derby - Gas,Australia,Gas,Fosil,12.53,2,1
+Devils Gate - Hydro,Australia,Hydro,Renovable,60.0,0,0
+Diamantina - Gas,Australia,Gas,Fosil,242.0,2,1
+Dry Creek - Gas,Australia,Gas,Fosil,156.0,2,1
+Dubbo - Solar,Australia,Solar,Renovable,30.0,0,0
+EarthPower Biomass Plant - Waste,Australia,Waste,Fosil,3.9,0,0
+Eastern Creek - Waste,Australia,Waste,Fosil,5.4,0,0
+Eastern Creek 2 - Waste,Australia,Waste,Fosil,8.984,0,0
+Eildon - Hydro,Australia,Hydro,Renovable,120.0,0,0
+Eildon Small Hydro - Hydro,Australia,Hydro,Renovable,5.0,0,0
+Elliott - Oil,Australia,Oil,Fosil,1.0,2,1
+Emerald Solar Farm - Solar,Australia,Solar,Renovable,68.0,0,0
+Emu Downs - Solar,Australia,Solar,Renovable,20.0,0,0
+Emu Downs Wind Farm - Wind,Australia,Wind,Renovable,79.2,0,0
+Energy Brix - Coal,Australia,Coal,Fosil,195.0,0,0
+Eraring - Oil,Australia,Oil,Fosil,41.5,2,1
+Esperance - Gas,Australia,Gas,Fosil,33.0,2,1
+Esperance Wind Farm Nine Mile Beach - Wind,Australia,Wind,Renovable,3.6,0,0
+Esperance Wind Farm Ten Mile Lagoon - Wind,Australia,Wind,Renovable,2.03,0,0
+Exmouth - Gas,Australia,Gas,Fosil,8.0,2,1
+Fisher - Hydro,Australia,Hydro,Renovable,43.2,0,0
+Fitzroy Crossing - Gas,Australia,Gas,Fosil,4.06,2,1
+Gannawarra Solar Farm - Solar,Australia,Solar,Renovable,60.0,0,0
+Geraldton - Gas,Australia,Gas,Fosil,21.0,2,1
+German Creek - Gas,Australia,Gas,Fosil,45.2,2,1
+Gladstone - Coal,Australia,Coal,Fosil,1680.0,1,-1
+Glenbawn - Hydro,Australia,Hydro,Renovable,5.8,0,0
+Glennies Creek - Gas,Australia,Gas,Fosil,13.0,2,1
+Glenorchy - Waste,Australia,Waste,Fosil,1.6,0,0
+Goondiwindi - Solar,Australia,Solar,Renovable,4.5,0,0
+Gordon - Hydro,Australia,Hydro,Renovable,432.0,0,0
+Gosnells - Waste,Australia,Waste,Fosil,1.1,0,0
+Grange Avenue - Waste,Australia,Waste,Fosil,2.0,0,0
+Grasmere Wind Farm (Albany Stage II) - Wind,Australia,Wind,Renovable,13.8,0,0
+Greenough River Solar Farm - Solar,Australia,Solar,Renovable,10.0,0,0
+Griffith Solar Farm - Solar,Australia,Solar,Renovable,36.0,0,0
+Gullen - Solar,Australia,Solar,Renovable,10.0,0,0
+Gullen Range Wind Farm - Wind,Australia,Wind,Renovable,165.5,0,0
+Gunning - Wind,Australia,Wind,Renovable,47.0,0,0
+Guthega - Hydro,Australia,Hydro,Renovable,80.0,0,0
+Hallam Road - Waste,Australia,Waste,Fosil,8.984,0,0
+Hallet 5 - The Bluff - Wind,Australia,Wind,Renovable,52.5,0,0
+Hallett - Gas,Australia,Gas,Fosil,228.3,2,1
+Hallett 1 Brown Hill Wind Farm - Wind,Australia,Wind,Renovable,94.5,0,0
+Hallett 2 Hallet Hill Wind Farm - Wind,Australia,Wind,Renovable,71.4,0,0
+Halls Creek - Gas,Australia,Gas,Fosil,3.69,2,1
+Hamilton Solar Farm - Solar,Australia,Solar,Renovable,69.0,0,0
+Haughton River Solar Farm - Solar,Australia,Solar,Renovable,500.0,0,0
+Hayman Solar Farm - Solar,Australia,Solar,Renovable,180.0,0,0
+Hazelwood - Coal,Australia,Coal,Fosil,1600.0,1,-1
