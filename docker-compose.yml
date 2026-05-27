@@ -1,44 +1,43 @@
 services:
   workspace:
-    build: .
-    container_name: BigData_workspace
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
     ports:
-      - "8888:8888"   # Jupyter Lab
-      - "6080:6080"   # Visualizador del Scraper (VNC)
-      - "4040:4040"   # Spark UI
+      - "8889:8888"   # Jupyter Lab
+      - "6081:6080"   # Visualizador del scraper (VNC)
+      - "4041:4040"   # Spark UI
     volumes:
       - .:/home/jovyan/work
     environment:
       - JUPYTER_ENABLE_LAB=yes
-    dns:
-      - 8.8.8.8
-    user: root
+      - JUPYTER_TOKEN=
+      - JUPYTER_PASSWORD=iicg2026
+      - JUPYTER_ALLOW_INSECURE_WRITES=true
+    depends_on:
+      - database
     restart: always
     networks:
       - bigdata_net
 
-  visualizer:
-    image: mongo-express
-    container_name: BigData_Visualizer
+  database:
+    image: mongo:latest
     ports:
-      - "8081:8081"   # Mongo Express
-    environment:
-      - ME_CONFIG_MONGODB_URL=mongodb+srv://usuario:password@cluster0.kthdyh1.mongodb.net/?retryWrites=true&w=majority
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-      - VC_NODE_TLS_REJECT_UNAUTHORIZED=0
-    dns:
-      - 8.8.8.8
-    restart: always
-    networks:
-      - bigdata_net
-
-  filebrowser:
-    image: filebrowser/filebrowser
-    container_name: BigData_FileBrowser
-    ports:
-      - "8082:80"     # Gestor de archivos
+      - "27018:27017"
     volumes:
-      - .:/srv
+      - mongo_data:/data/db
+    restart: always
+    networks:
+      - bigdata_net
+
+  admin-db:
+    image: mongo-express:latest
+    ports:
+      - "8083:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://database:27017/
+    depends_on:
+      - database
     restart: always
     networks:
       - bigdata_net
@@ -46,4 +45,6 @@ services:
 networks:
   bigdata_net:
     driver: bridge
-    name: BigData_Network_UCN
+
+volumes:
+  mongo_data:
