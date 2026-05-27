@@ -5,3 +5,4 @@ Energy/.ipynb_checkpoints/Untitled4-checkpoint.ipynb
 __pycache__/
 *.pyc
 .env
+semanas/**/modelos/

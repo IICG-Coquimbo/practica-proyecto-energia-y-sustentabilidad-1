@@ -1,0 +1,127 @@
+item,pais,tecnologia,capacidad_mw,cluster_kmeans,cluster_predicho_arbol
+AGUA DEL TORO - Hydro,Argentina,Hydro,130.0,0.0,0.0
+ALUMINE - Oil,Argentina,Oil,1.904,2.0,2.0
+ARROYITO - Hydro,Argentina,Hydro,128.0,0.0,0.0
+ATUCHA I - Nuclear,Argentina,Nuclear,370.0,0.0,0.0
+Ain Azel - Solar,Algeria,Solar,20.0,0.0,0.0
+Ain Djasser - Gas,Algeria,Gas,520.0,2.0,2.0
+Ain Sekhouna - Solar,Algeria,Solar,20.0,0.0,0.0
+Albany Wind Farm - Wind,Australia,Wind,21.6,0.0,0.0
+Amcor Gawler - Oil,Australia,Oil,4.0,2.0,2.0
+Anglesea - Coal,Australia,Coal,165.0,0.0,0.0
+Angurugu - Oil,Australia,Oil,3.6,2.0,2.0
+Ararat Wind Farm - Wind,Australia,Wind,240.0,0.0,0.0
+Arbaa - Gas,Algeria,Gas,560.0,2.0,2.0
+Argyle Diamond Mine - Oil,Australia,Oil,32.0,2.0,2.0
+BANDERA - Oil,Argentina,Oil,31.0,2.0,2.0
+BENJAMIN REOLIN - Hydro,Argentina,Hydro,38.4,0.0,0.0
+BERNARDO  DE IRIGOYEN - Oil,Argentina,Oil,2.096,2.0,2.0
+Bankstown Sports Club - Oil,Australia,Oil,2.0,2.0,2.0
+Barcaldine KDB - Solar,Australia,Solar,20.0,0.0,0.0
+Barcaldine YD - Solar,Australia,Solar,10.9,0.0,0.0
+Bastyan - Hydro,Australia,Hydro,79.9,0.0,0.0
+Bayswater - Coal,Australia,Coal,2640.0,1.0,1.0
+Belconnen - Waste,Australia,Waste,1.0,0.0,0.0
+Bendeela (Shoalhaven Scheme) - Hydro,Australia,Hydro,240.0,0.0,0.0
+Berwick - Waste,Australia,Waste,7.2,0.0,0.0
+Biopio - Oil,Angola,Oil,22.8,2.0,2.0
+Bir Rebaa - Solar,Algeria,Solar,10.0,0.0,0.0
+Boco Rock - Wind,Australia,Wind,113.0,0.0,0.0
+Bogong (Mount Beauty Hydro Scheme) - Hydro,Australia,Hydro,300.0,0.0,0.0
+Braemar 2 - Gas,Australia,Gas,519.0,2.0,2.0
+Bremer Bay Diesel Backup - Oil,Australia,Oil,1.3,2.0,2.0
+Broken Hill - Gas,Australia,Gas,50.0,2.0,2.0
+Brooklyn - Waste,Australia,Waste,2.83,0.0,0.0
+Bungala II - Solar,Australia,Solar,110.0,0.0,0.0
+CACHEUTA (NUEVA) - Hydro,Argentina,Hydro,120.0,0.0,0.0
+CASSAFFOUSTH - Hydro,Argentina,Hydro,17.28,0.0,0.0
+CENTRAL TERMOELECTRICA GUILLERMO BROWN - Gas,Argentina,Gas,524.0,2.0,2.0
+CHILECITO - Oil,Argentina,Oil,5.0,2.0,2.0
+CHIMBERA 1 - Solar,Argentina,Solar,2.0,0.0,0.0
+CIPOLLETTI - Hydro,Argentina,Hydro,5.78,0.0,0.0
+COSTANERA - Coal,Argentina,Coal,1982.2,1.0,1.0
+CRUZ DEL EJE - Oil,Argentina,Oil,5.052,2.0,2.0
+CT ALUMINE - Oil,Argentina,Oil,6.3,2.0,2.0
+CT ARRECIFES - Oil,Argentina,Oil,20.0,2.0,2.0
+CT CERES - Oil,Argentina,Oil,18.0,2.0,2.0
+CT CIPOLLETTI - Oil,Argentina,Oil,5.0,2.0,2.0
+CT FORMOSA II - Oil,Argentina,Oil,30.0,2.0,2.0
+CT GOYA - Oil,Argentina,Oil,13.0,2.0,2.0
+CT LA RIOJA DELIVERY - Oil,Argentina,Oil,19.2,2.0,2.0
+CT LAS ARMAS II - Gas,Argentina,Gas,23.37,2.0,2.0
+CT LOBOS - Oil,Argentina,Oil,15.686,2.0,2.0
+CT MEDANITOS (RINCON DE LOS SAUCES) - Oil,Argentina,Oil,32.0,2.0,2.0
+CT REALICO - Oil,Argentina,Oil,24.0,2.0,2.0
+CT SAN MIGUEL DE TUCUMAN - Gas,Argentina,Gas,396.62,2.0,2.0
+CT TARTAGAL - Oil,Argentina,Oil,10.0,2.0,2.0
+Caldenes del Oeste - Solar,Argentina,Solar,30.0,0.0,0.0
+Callide B - Coal,Australia,Coal,700.0,1.0,1.0
+Camballin - Gas,Australia,Gas,1.04,2.0,2.0
+Capanda - Hydro,Angola,Hydro,520.0,0.0,0.0
+Cape Preston - Gas,Australia,Gas,450.0,2.0,2.0
+Capral (Aluminium Smelter) - Gas,Australia,Gas,300.0,2.0,2.0
+Cawse Nickel Mine - Gas,Australia,Gas,21.0,2.0,2.0
+Clare Solar Farm - Solar,Australia,Solar,130.0,0.0,0.0
+Claytons - Waste,Australia,Waste,11.0,0.0,0.0
+Cockburn - Gas,Australia,Gas,240.0,2.0,2.0
+Crowlands Wind Farm - Wind,Australia,Wind,80.0,0.0,0.0
+DOCK SUD - Gas,Argentina,Gas,872.3,1.0,1.0
+Darling Downs - Gas,Australia,Gas,644.0,1.0,1.0
+Darlot Gold Mine - Gas,Australia,Gas,11.7,2.0,2.0
+Daydream Solar Farm  - Solar,Australia,Solar,50.0,0.0,0.0
+Denham Diesel Backup - Oil,Australia,Oil,1.6,2.0,2.0
+ESQUINA - Oil,Argentina,Oil,2.215,2.0,2.0
+El Kheneg - Solar,Algeria,Solar,60.0,0.0,0.0
+Emu Downs - Solar,Australia,Solar,20.0,0.0,0.0
+Emu Downs Wind Farm - Wind,Australia,Wind,79.2,0.0,0.0
+Eraring - Oil,Australia,Oil,41.5,2.0,2.0
+Esperance Wind Farm Nine Mile Beach - Wind,Australia,Wind,3.6,0.0,0.0
+Exmouth - Gas,Australia,Gas,8.0,2.0,2.0
+F'Krina - Gas,Algeria,Gas,292.0,2.0,2.0
+GENERAL SAN MARTIN - Hydro,Argentina,Hydro,6.0,0.0,0.0
+GOYA - Oil,Argentina,Oil,1.33,2.0,2.0
+Gladstone - Coal,Australia,Coal,1680.0,1.0,1.0
+Gosnells - Waste,Australia,Waste,1.1,0.0,0.0
+Gullen - Solar,Australia,Solar,10.0,0.0,0.0
+Gullen Range Wind Farm - Wind,Australia,Wind,165.5,0.0,0.0
+Hallam Road - Waste,Australia,Waste,8.984,0.0,0.0
+Hallett - Gas,Australia,Gas,228.3,2.0,2.0
+Hamilton Solar Farm - Solar,Australia,Solar,69.0,0.0,0.0
+Hassi Messaoud Mobile - Gas,Algeria,Gas,72.0,2.0,2.0
+Haughton River Solar Farm - Solar,Australia,Solar,500.0,0.0,0.0
+Hrazadan - Gas,Armenia,Gas,1110.0,1.0,1.0
+Iglesia-Guañizuil - Solar,Argentina,Solar,80.0,0.0,0.0
+Koudiet Eddraouch - Gas,Algeria,Gas,1200.0,1.0,1.0
+LOS MOLINOS I - Hydro,Argentina,Hydro,59.04,0.0,0.0
+Labreg - Gas,Algeria,Gas,396.0,2.0,2.0
+MAR DEL PLATA (9 DE JULIO) - Gas,Argentina,Gas,201.3,2.0,2.0
+MODESTO MARANZANA - Gas,Argentina,Gas,250.0,2.0,2.0
+Marsat TG - Gas,Algeria,Gas,184.0,2.0,2.0
+Matala - Hydro,Angola,Hydro,40.0,0.0,0.0
+McMurdo Station Generator - Oil,Antarctica,Oil,6.6,2.0,2.0
+Msila 1 - Gas,Algeria,Gas,980.0,1.0,1.0
+NIHUIL II - Hydro,Argentina,Hydro,133.12,0.0,0.0
+Nangarhar (Darunta) Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,11.55,0.0,0.0
+Northwest Kabul Power Plant Afghanistan - Gas,Afghanistan,Gas,42.0,2.0,2.0
+Oued el Ma - Solar,Algeria,Solar,20.0,0.0,0.0
+PARQUE EOLICO RAWSON II (ENARSA) - Wind,Argentina,Wind,28.8,0.0,0.0
+PATAGONIA - Gas,Argentina,Gas,123.7,2.0,2.0
+PERUGORRIA - Oil,Argentina,Oil,1.11,2.0,2.0
+PLANTA PILOTO FOTOVOLTAICA SAN JUAN 1 - Solar,Argentina,Solar,1.2,0.0,0.0
+Pul-e-Khumri Hydroelectric Power Plant Afghanistan - Hydro,Afghanistan,Hydro,6.0,0.0,0.0
+RIO CORRALITO - Hydro,Argentina,Hydro,13.2,0.0,0.0
+RIO GRANDE - Hydro,Argentina,Hydro,750.0,1.0,0.0
+Ras Djinet - Gas,Algeria,Gas,672.0,1.0,1.0
+Reggane - Solar,Algeria,Solar,5.0,0.0,0.0
+SALTO ANDERSEN - Hydro,Argentina,Hydro,7.9,0.0,0.0
+SAN NICOLAS - Coal,Argentina,Coal,644.0,1.0,1.0
+SAN PEDRO - Oil,Argentina,Oil,2.216,2.0,2.0
+SKB IPP - Gas,Algeria,Gas,484.0,2.0,2.0
+Shamb - Hydro,Armenia,Hydro,170.0,0.0,0.0
+Skikda - Gas,Algeria,Gas,262.0,2.0,2.0
+Spandaryan - Hydro,Armenia,Hydro,76.0,0.0,0.0
+TENARIS SIDERCA CETE II - Gas,Argentina,Gas,163.20000000000002,2.0,2.0
+Tatev - Hydro,Armenia,Hydro,158.0,0.0,0.0
+Timimoun - Solar,Algeria,Solar,9.0,0.0,0.0
+Ulez - Hydro,Albania,Hydro,25.0,0.0,0.0
+Xitoto - Oil,Angola,Oil,11.34,2.0,2.0
