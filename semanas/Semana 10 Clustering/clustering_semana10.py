@@ -19,6 +19,9 @@ PROJECT_DIR = Path(__file__).resolve().parents[2]
 INPUT_PATH = PROJECT_DIR / "semanas" / "Semana 9 EDA Spark" / "salidas" / "features_eda_semana9.csv"
 OUTPUT_DIR = Path(__file__).resolve().parent / "salidas"
 FIGURE_DIR = OUTPUT_DIR / "figuras"
+MODEL_DIR = Path(__file__).resolve().parent / "modelos"
+LABELED_DATA_PATH = MODEL_DIR / "datos_etiquetados_kmeans"
+KMEANS_MODEL_PATH = MODEL_DIR / "kmeans_energia_v1"
 
 MODEL_FEATURES = [
     "log_generacion",
@@ -132,6 +135,7 @@ def exportar_graficos(
 
 def ejecutar_clustering() -> dict[str, object]:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
     spark = crear_spark()
     try:
         df = cargar_features(spark).cache()
@@ -144,6 +148,10 @@ def ejecutar_clustering() -> dict[str, object]:
         print(f"Varianza explicada por PCA: {pca_model.explainedVariance.toArray()}")
         print(f"K seleccionado por mayor silhouette: {k_optimo}")
         evaluacion.round(4).to_csv(OUTPUT_DIR / "evaluacion_kmeans.csv", index=False, encoding="utf-8")
+        predictions.write.mode("overwrite").parquet(str(LABELED_DATA_PATH))
+        model.write().overwrite().save(str(KMEANS_MODEL_PATH))
+        print(f"Datos pseudo-etiquetados guardados en: {LABELED_DATA_PATH}")
+        print(f"Modelo K-means guardado en: {KMEANS_MODEL_PATH}")
 
         resumen = predictions.groupBy("prediction").agg(
             F.count("*").alias("observaciones"),
