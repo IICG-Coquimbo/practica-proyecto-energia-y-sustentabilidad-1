@@ -139,9 +139,11 @@ db.union_semana7.countDocuments()
 
 La rama individual `feature/Nicol-Castillo` contiene actividad distribuida en varias semanas, incluyendo preparacion de entorno, integracion, visualizacion y ajuste del ano comun para comparacion consistente.
 
-## Semana 9: Procesamiento con Spark y EDA
+## Semanas 9 y 10: EDA y aprendizaje no supervisado
 
 La entrega extiende la integracion de Semana 7 usando los registros EIA del periodo comun. Los datos CNE permanecen disponibles en la coleccion, pero se excluyen de las relaciones generacion-emisiones porque representan proyectos en `MW` y no energia generada en `MWh`.
+
+### Semana 9 - Procesamiento con Spark y EDA
 
 Notebook principal:
 
@@ -152,6 +154,18 @@ Script reproducible:
 - `semanas/Semana 9 EDA Spark/eda_semana9.py`
 
 El analisis lee MongoDB mediante Spark y usa automaticamente el CSV de Semana 7 como respaldo si Mongo no esta disponible. Incluye limpieza y deduplicacion, revision de nulos, creacion de intensidad de CO2 (`toneladas CO2 / MWh`), participacion de generacion, transformaciones logaritmicas, puntaje z, outliers IQR, asimetria, correlaciones Pearson/Spearman y graficos.
+
+### Semana 10 - Clustering
+
+Notebook principal:
+
+- `semanas/Semana 10 Clustering/Clustering_Semana10.ipynb`
+
+Script reproducible:
+
+- `semanas/Semana 10 Clustering/clustering_semana10.py`
+
+Este flujo consume `features_eda_semana9.csv`, estandariza variables, reduce dimensiones con PCA y aplica K-means. La seleccion de `k` evalua inercia y silhouette para no imponer un numero de clusters sin evidencia. DBSCAN complementa el analisis identificando puntos aislados (`cluster = -1`).
 
 ### Ejecucion
 
@@ -167,9 +181,10 @@ En una instalacion nueva o si la coleccion MongoDB esta vacia, genere primero la
 docker compose exec workspace bash -lc "cd /home/jovyan/work && python main.py"
 ```
 
-Luego abra Jupyter en `http://localhost:8889/lab` y ejecute:
+Luego abra Jupyter en `http://localhost:8889/lab` y ejecute, en orden:
 
-- `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`
+1. `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`
+2. `semanas/Semana 10 Clustering/Clustering_Semana10.ipynb`
 
 Las salidas se escriben en las carpetas `salidas/` de cada semana, incluyendo CSV analiticos y figuras PNG. Para probar Semana 9 solamente con el CSV local, se puede definir `FUENTE_DATOS=csv` antes de ejecutar el script.
 
@@ -181,6 +196,9 @@ La ejecucion en Docker leyendo `proyecto_bigdata.union_semana7` mediante Spark-M
 - `80` perfiles region-categoria con generacion y emisiones comparables.
 - `6` perfiles atipicos segun IQR de intensidad CO2.
 - Correlacion Pearson generacion-emisiones: `0,9484`.
+- PCA con dos componentes: `91,23%` de varianza explicada acumulada.
+- K-means: `k=3` seleccionado por silhouette.
+- DBSCAN: `20` observaciones marcadas como ruido para investigacion posterior.
 
 ## Archivos principales
 
@@ -188,5 +206,6 @@ La ejecucion en Docker leyendo `proyecto_bigdata.union_semana7` mediante Spark-M
 - `scrapers/scraper_nicol_castillo.py`: scraper e integracion del aporte individual.
 - `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`: revision de resultados en Jupyter.
 - `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`: EDA, correlaciones y variables derivadas.
+- `semanas/Semana 10 Clustering/Clustering_Semana10.ipynb`: PCA, K-means y DBSCAN.
 - `docker-compose.yml`: coordinacion de servicios.
 - `Dockerfile.jupyter`: dependencias para scraping, Spark y conectores MongoDB.
