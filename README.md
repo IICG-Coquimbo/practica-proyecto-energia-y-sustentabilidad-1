@@ -185,6 +185,7 @@ Luego abra Jupyter en `http://localhost:8889/lab` y ejecute, en orden:
 
 1. `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`
 2. `semanas/Semana 10 Clustering/Clustering_Semana10.ipynb`
+3. `semanas/Semana 12 Pseudo-labeling/PseudoLabeling_Semana12.ipynb`
 
 Las salidas se escriben en las carpetas `salidas/` de cada semana, incluyendo CSV analiticos y figuras PNG. Para probar Semana 9 solamente con el CSV local, se puede definir `FUENTE_DATOS=csv` antes de ejecutar el script.
 
@@ -200,6 +201,37 @@ La ejecucion en Docker leyendo `proyecto_bigdata.union_semana7` mediante Spark-M
 - K-means: `k=3` seleccionado por silhouette.
 - DBSCAN: `20` observaciones marcadas como ruido para investigacion posterior.
 
+## Semana 12: Aprendizaje semi-supervisado
+
+Semana 12 reutiliza el resultado de K-means como pseudo-etiqueta. Por esta razon, Semana 10 ahora guarda automaticamente:
+
+- `semanas/Semana 10 Clustering/modelos/datos_etiquetados_kmeans`: registros y clusters en formato Parquet.
+- `semanas/Semana 10 Clustering/modelos/kmeans_energia_v1`: modelo K-means persistido por Spark.
+
+Notebook principal:
+
+- `semanas/Semana 12 Pseudo-labeling/PseudoLabeling_Semana12.ipynb`
+
+Script reproducible:
+
+- `semanas/Semana 12 Pseudo-labeling/pseudo_labeling_semana12.py`
+
+El analisis convierte el cluster de K-means en `label`, divide los datos en entrenamiento/prueba y compara Arbol de Decision, Random Forest, SVM con estrategia OneVsRest y Regresion Logistica Multinomial. Tambien entrena una regresion lineal para predecir `intensidad_co2`; no usa emisiones como predictor porque eso constituiria fuga de informacion.
+
+El ticket de salida distingue entre replicar las reglas geometricas de K-means y predecir un fenomeno ambiental real: para mejorar este ultimo caso se requieren variables como combustible, tecnologia detallada, eficiencia y condiciones operacionales.
+
+### Resultados verificados de Semana 12
+
+La ejecucion en Docker usando las `80` pseudo-etiquetas obtenidas en Semana 10 produjo:
+
+- Arbol de Decision: `96,97%` de accuracy.
+- Random Forest: `100,00%` de accuracy.
+- SVM OneVsRest: `96,97%` de accuracy.
+- Regresion Logistica Multinomial: `100,00%` de accuracy.
+- Regresion lineal regularizada de intensidad CO2: `R2 = -0,0616` y `RMSE = 0,670230`.
+
+Los clasificadores replican muy bien la regla geometrica creada por K-means, mientras que la regresion evidencia que volumen y participacion de generacion no explican por si solos la intensidad ambiental real.
+
 ## Archivos principales
 
 - `main.py`: orquestador de scrapers, limpieza con Spark y carga a Mongo.
@@ -207,5 +239,6 @@ La ejecucion en Docker leyendo `proyecto_bigdata.union_semana7` mediante Spark-M
 - `semanas/Semana 7 La union/Visualizacion_Semana7.ipynb`: revision de resultados en Jupyter.
 - `semanas/Semana 9 EDA Spark/EDA_Semana9.ipynb`: EDA, correlaciones y variables derivadas.
 - `semanas/Semana 10 Clustering/Clustering_Semana10.ipynb`: PCA, K-means y DBSCAN.
+- `semanas/Semana 12 Pseudo-labeling/PseudoLabeling_Semana12.ipynb`: pseudo-etiquetas, clasificadores y regresion.
 - `docker-compose.yml`: coordinacion de servicios.
 - `Dockerfile.jupyter`: dependencias para scraping, Spark y conectores MongoDB.
