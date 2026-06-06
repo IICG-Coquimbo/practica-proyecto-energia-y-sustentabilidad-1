@@ -14,9 +14,32 @@ services:
       - JUPYTER_TOKEN=
       - JUPYTER_PASSWORD=iicg2026
       - JUPYTER_ALLOW_INSECURE_WRITES=true
+      - MONGODB_URI=${MONGODB_URI:-mongodb://database:27017/}
+      - MONGODB_DATABASE=${MONGODB_DATABASE:-proyecto_bigdata}
+      - MONGODB_COLLECTION=${MONGODB_COLLECTION:-union_semana7}
+      - MONGODB_PROCESSED_COLLECTION=${MONGODB_PROCESSED_COLLECTION:-processed_data}
     depends_on:
       - database
     restart: always
+    networks:
+      - bigdata_net
+
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "/home/jovyan/work/src/hito2_processor.py"]
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      - MONGODB_URI=${MONGODB_URI:-mongodb://database:27017/}
+      - MONGODB_DATABASE=${MONGODB_DATABASE:-proyecto_bigdata}
+      - MONGODB_COLLECTION=${MONGODB_COLLECTION:-union_semana7}
+      - MONGODB_PROCESSED_COLLECTION=${MONGODB_PROCESSED_COLLECTION:-processed_data}
+    depends_on:
+      - database
+    profiles:
+      - hito2
     networks:
       - bigdata_net
 

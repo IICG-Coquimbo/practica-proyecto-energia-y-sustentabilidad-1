@@ -20,6 +20,7 @@ MODELO_KMEANS = SEMANA10_DIR / "modelos" / "kmeans_huella_carbono"
 MONGO_URI = os.getenv("MONGODB_URI", "mongodb://database:27017/")
 MONGO_DATABASE = os.getenv("MONGODB_DATABASE", "proyecto_bigdata")
 MONGO_COLLECTION = os.getenv("MONGODB_COLLECTION", "union_semana7")
+MONGO_PROCESSED_COLLECTION = os.getenv("MONGODB_PROCESSED_COLLECTION", "processed_data")
 
 MONGO_JARS = [
     "/usr/local/spark/jars/mongo-spark-connector_2.12-10.3.0.jar",
@@ -50,6 +51,9 @@ def crear_spark(app_name: str) -> SparkSession:
         builder.config("spark.mongodb.read.connection.uri", MONGO_URI)
         .config("spark.mongodb.read.database", MONGO_DATABASE)
         .config("spark.mongodb.read.collection", MONGO_COLLECTION)
+        .config("spark.mongodb.write.connection.uri", MONGO_URI)
+        .config("spark.mongodb.write.database", MONGO_DATABASE)
+        .config("spark.mongodb.write.collection", MONGO_PROCESSED_COLLECTION)
         .getOrCreate()
     )
 

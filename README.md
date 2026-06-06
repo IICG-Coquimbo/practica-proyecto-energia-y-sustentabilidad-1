@@ -195,3 +195,84 @@ sin modificar sus contenedores, por ejemplo:
 ```powershell
 $env:JUPYTER_PORT="8890"; $env:VNC_PORT="6082"; $env:SPARK_UI_PORT="4042"; $env:MONGO_PORT="27019"; $env:MONGO_EXPRESS_PORT="8084"; docker compose up -d --build
 ```
+
+## Hito 2: analisis inteligente y segmentacion
+
+### Objetivo de negocio
+
+El Hito 2 transforma los datos energeticos crudos del grupo en conocimiento para
+responder la pregunta: **que combinaciones de region, tecnologia y categoria
+energetica presentan mayor huella de carbono por unidad de energia generada**.
+
+La variable central del analisis es:
+
+```text
+intensidad_kgco2_mwh = emisiones_tco2 / generacion_mwh * 1000
+```
+
+Esta metrica permite comparar emisiones relativas aunque las regiones o
+tecnologias tengan escalas de generacion distintas.
+
+### Propiedad de modulo
+
+| Integrante | Rama | Propiedad tecnica para Hito 2 |
+| --- | --- | --- |
+| Anggy Jeraldo | `feature/anggy-jeraldo` | Limpieza de datos energeticos, construccion de la variable dependiente `intensidad_kgco2_mwh`, EDA multivariado, clustering e insumos para el informe grupal |
+| Nicol Castillo | `feature/Nicol-Castillo` | Aporte de datos EIA/CNE sobre generacion y emisiones energeticas |
+| Thalia Gonzalez | `feature/Thalia-Gonzalez` | Aporte de datos de infraestructura/capacidad energetica para contexto de sustentabilidad |
+
+### Pipeline raw_data a processed_data
+
+La entrega 2 separa datos crudos y datos limpios:
+
+- Coleccion cruda: `raw_data` en Atlas para persistencia final, o
+  `union_semana7` en ejecuciones locales de respaldo.
+- Coleccion procesada: `processed_data`.
+- Script del processor: `src/hito2_processor.py`.
+
+Variables de entorno requeridas, usando `.env.example` como plantilla:
+
+```text
+MONGODB_URI=mongodb+srv://USUARIO:CLAVE@cluster.mongodb.net/proyecto_bigdata?retryWrites=true&w=majority
+MONGODB_DATABASE=proyecto_bigdata
+MONGODB_COLLECTION=raw_data
+MONGODB_PROCESSED_COLLECTION=processed_data
+```
+
+Ejecutar el contenedor processor:
+
+```bash
+docker compose --profile hito2 run --rm processor
+```
+
+En pruebas locales, si aun se trabaja con el respaldo de la primera integracion,
+`MONGODB_COLLECTION` puede apuntar a `union_semana7`.
+
+### Requerimientos tecnicos cubiertos
+
+| Requisito Hito 2 | Implementacion |
+| --- | --- |
+| Limpieza de nulos, duplicados y formatos | `limpiar_base()` normaliza tipos, elimina registros incompletos y deduplica por claves energeticas |
+| 3+ atributos derivados | `intensidad_kgco2_mwh`, `log_generacion_mwh`, `log_emisiones_tco2`, `nivel_huella`, participaciones porcentuales y brecha contra promedio |
+| EDA multivariado | Semana 9 compara region, tecnologia, categoria, generacion, emisiones e intensidad |
+| Clustering | Semana 10 aplica PCA, K-Means y DBSCAN |
+| Variable dependiente Hito 3 | `intensidad_kgco2_mwh` |
+| Separacion raw/processed | `src/hito2_processor.py` escribe en `processed_data` |
+| Insumo para informe grupal | `docs/hito2/aporte_anggy_hito2.md` |
+
+### Resultados principales
+
+- Datos crudos usados en el respaldo local: 2.686 documentos.
+- Registros procesados comparables de huella: 164.
+- Promedio renovable: 22,12 kg CO2/MWh.
+- Promedio fosil: 876,64 kg CO2/MWh.
+- K-Means genera 3 perfiles de huella.
+- DBSCAN detecta observaciones atipicas para revision.
+- La variable predictiva propuesta para el Hito 3 es `intensidad_kgco2_mwh`.
+
+### Archivos del Hito 2
+
+- `src/hito2_processor.py`: processor del pipeline.
+- `docs/hito2/README_HITO2.md`: resumen operativo del hito.
+- `docs/hito2/aporte_anggy_hito2.md`: texto y resultados del modulo de Anggy para que el grupo los revise antes de consolidar el informe final.
+- `docs/evidencias_semanas_9_12/`: graficos EDA y clustering.
