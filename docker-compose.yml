@@ -7,6 +7,7 @@ services:
       - "${JUPYTER_PORT:-8889}:8888"   # Jupyter Lab
       - "${VNC_PORT:-6081}:6080"        # Visualizador del scraper (VNC)
       - "${SPARK_UI_PORT:-4041}:4040"   # Spark UI
+      - "${STREAMLIT_PORT:-8501}:8501"   # Dashboard Streamlit
     volumes:
       - .:/home/jovyan/work
     environment:
